@@ -24,7 +24,7 @@ nnoremap <leader>: <Cmd>call VSCodeNotify('workbench.action.showCommands')<CR>
 xnoremap <leader>: <Cmd>call VSCodeNotify('workbench.action.showCommands')<CR>
 xnoremap <leader>; <Cmd>call VSCodeNotify('workbench.action.showAllSymbols')<CR>
 
-"Open VSCode symbols quick meVS
+"Open VSCode symbols quick menu
 nnoremap <leader>; <Cmd>call VSCodeNotify('workbench.action.showAllSymbols')<CR>
 xnoremap <leader>; <Cmd>call VSCodeNotify('workbench.action.showAllSymbols')<CR>
 
@@ -39,7 +39,7 @@ xnoremap <M-k> :m '<-2<CR>gv=gv
 
 """ Neovim (n)
 " Reload configuration
-nnoremap <leader>ns :source ~/.config/nvim/init.vim<CR>
+nnoremap <leader>ns :source $NVIM_CONFIG/init.vim<CR>
 
 
 """ File (f)
