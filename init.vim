@@ -39,7 +39,7 @@ xnoremap <M-k> :m '<-2<CR>gv=gv
 
 """ Neovim (n)
 " Reload configuration
-nnoremap <leader>ns :source $NVIM_CONFIG/init.vim<CR>
+nnoremap <leader>ns :source <CR>
 
 
 """ File (f)
