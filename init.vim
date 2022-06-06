@@ -52,6 +52,9 @@ nnoremap <leader>fS <Cmd>call VSCodeNotify('workbench.action.files.saveAs')<CR>
 " Save all files
 nnoremap <leader>fa <Cmd>call VSCodeNotify('workbench.action.files.saveAll')<CR>
 
+" Save file without formatting
+nnoremap <leader>fw <Cmd>call VSCodeNotify('workbench.action.files.saveWithoutFormatting')<CR>
+
 " New empty file
 nnoremap <leader>fn <Cmd>call VSCodeNotify('workbench.action.files.newUntitledFile')<CR>
 
