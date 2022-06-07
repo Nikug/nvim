@@ -29,12 +29,16 @@ nnoremap <leader>; <Cmd>call VSCodeNotify('workbench.action.showAllSymbols')<CR>
 xnoremap <leader>; <Cmd>call VSCodeNotify('workbench.action.showAllSymbols')<CR>
 
 " Move line/lines down
-nnoremap <M-j> :m .+1<CR>==
-xnoremap <M-j> :m '>+1<CR>gv=gv
+" nnoremap <M-j> :m .+1<CR>==
+" xnoremap <M-j> :m '>+1<CR>gv=gv
+nnoremap <M-j> <Cmd>call VSCodeCall('editor.action.moveLinesDownAction')<CR>
+xnoremap <M-j> <Cmd>call VSCodeCall('editor.action.moveLinesDownAction')<CR>
 
 " Move line/lines up
-nnoremap <M-k> :m .-2<CR>==
-xnoremap <M-k> :m '<-2<CR>gv=gv
+" nnoremap <M-k> :m .-2<CR>==
+" xnoremap <M-k> :m '<-2<CR>gv=gv
+nnoremap <M-j> <Cmd>call VSCodeCall('editor.action.moveLinesUpAction')<CR>
+xnoremap <M-j> <Cmd>call VSCodeCall('editor.action.moveLinesUpAction')<CR>
 
 
 """ Neovim (n)
