@@ -13,8 +13,46 @@ set notimeout
 
 " Only map these in vscode
 if exists('g:vscode')
+  
+""" Functions
+function! NewVisualSelection(start, end)
+  let newVisualSelection = "normal!" . a:start . "GV" . a:end . "G"
+  execute newVisualSelection
+endfunction
 
-""" General
+function! VSCodeCallMoveLines(direction)
+  let startLine = getpos("'<")[1]
+  let endLine = getpos("'>")[1]
+  let topLine = line("w0")
+  let botLine = line("w$")
+  
+  " Check file boundaries
+  if startLine == topLine && a:direction == "Up"
+    call NewVisualSelection(startLine, endLine)
+    return
+  elseif endLine == botLine && a:direction == "Down" 
+    call NewVisualSelection(startLine, endLine)
+    return
+  endif
+  
+  " Call VS Code move liens
+  let removeVsCodeSelectionAfterCommand = 1
+  let vsCodeCommand = 'editor.action.moveLines' . a:direction . 'Action'
+  call VSCodeCallRange(vsCodeCommand, startLine, endLine, removeVsCodeSelectionAfterCommand)
+  
+  " Calculate new visual selection and update it
+  if a:direction == "Up"
+    let newStart = startLine - 1
+    let newEnd = endLine - 1
+  else
+    let newStart = startLine + 1
+    let newEnd = endLine + 1
+  endif
+  
+  call NewVisualSelection(newStart, newEnd)
+endfunction
+
+""" General h h
 " Open VSCode quick menu
 nnoremap <leader><leader> <Cmd>call VSCodeNotify('workbench.action.quickOpen')<CR>
 xnoremap <leader><leader> <Cmd>call VSCodeNotify('workbench.action.quickOpen')<CR>
@@ -22,7 +60,6 @@ xnoremap <leader><leader> <Cmd>call VSCodeNotify('workbench.action.quickOpen')<C
 " Open VSCode commands quick menu
 nnoremap <leader>: <Cmd>call VSCodeNotify('workbench.action.showCommands')<CR>
 xnoremap <leader>: <Cmd>call VSCodeNotify('workbench.action.showCommands')<CR>
-xnoremap <leader>; <Cmd>call VSCodeNotify('workbench.action.showAllSymbols')<CR>
 
 "Open VSCode symbols quick menu
 nnoremap <leader>; <Cmd>call VSCodeNotify('workbench.action.showAllSymbols')<CR>
@@ -31,14 +68,14 @@ xnoremap <leader>; <Cmd>call VSCodeNotify('workbench.action.showAllSymbols')<CR>
 " Move line/lines down
 " nnoremap <M-j> :m .+1<CR>==
 " xnoremap <M-j> :m '>+1<CR>gv=gv
-nnoremap <M-j> <Cmd>call VSCodeCall('editor.action.moveLinesDownAction')<CR>
-xnoremap <M-j> <Cmd>call VSCodeCall('editor.action.moveLinesDownAction')<CR>
+nmap <M-j> <Cmd>call VSCodeCall('editor.action.moveLinesDownAction')<CR>
+vmap <M-j> <Esc>:call VSCodeCallMoveLines('Down')<CR>
 
 " Move line/lines up
 " nnoremap <M-k> :m .-2<CR>==
 " xnoremap <M-k> :m '<-2<CR>gv=gv
-nnoremap <M-j> <Cmd>call VSCodeCall('editor.action.moveLinesUpAction')<CR>
-xnoremap <M-j> <Cmd>call VSCodeCall('editor.action.moveLinesUpAction')<CR>
+nmap <M-k> <Cmd>call VSCodeCall('editor.action.moveLinesUpAction')<CR>
+vmap <M-k> <Esc>:call VSCodeCallMoveLines('Up')<CR>
 
 
 """ Neovim (n)
@@ -48,19 +85,19 @@ nnoremap <leader>ns :source <CR>
 
 """ File (f)
 " Save file
-nnoremap <leader>fs <Cmd>call VSCodeNotify('workbench.action.files.save')<CR>
+nnoremap <leader>fs <Cmd>call VSCodeCall('workbench.action.files.save')<CR>
 
 " Save file as
-nnoremap <leader>fS <Cmd>call VSCodeNotify('workbench.action.files.saveAs')<CR>
+nnoremap <leader>fS <Cmd>call VSCodeCall('workbench.action.files.saveAs')<CR>
 
 " Save all files
-nnoremap <leader>fa <Cmd>call VSCodeNotify('workbench.action.files.saveAll')<CR>
+nnoremap <leader>fa <Cmd>call VSCodeCall('workbench.action.files.saveAll')<CR>
 
 " Save file without formatting
-nnoremap <leader>fw <Cmd>call VSCodeNotify('workbench.action.files.saveWithoutFormatting')<CR>
+nnoremap <leader>fw <Cmd>call VSCodeCall('workbench.action.files.saveWithoutFormatting')<CR>
 
 " New empty file
-nnoremap <leader>fn <Cmd>call VSCodeNotify('workbench.action.files.newUntitledFile')<CR>
+nnoremap <leader>fn <Cmd>call VSCodeCall('workbench.action.files.newUntitledFile')<CR>
 
 
 """ Window (w)
@@ -115,11 +152,11 @@ nnoremap <leader>sa ggvG " Select all
 nnoremap <leader>sA mmggVGy'm " Select all and yank
 
 " Copy selection to clipboard
-xnoremap <leader>sc <Cmd>call VSCodeNotifyVisual('editor.action.clipboardCopyAction', 0)<CR>
+xnoremap <leader>sc <Cmd>call VSCodeCallVisual('editor.action.clipboardCopyAction', 0)<CR>
 
 " Paste from clipboard
-nnoremap <leader>sp <Cmd>call VSCodeNotifyVisual('editor.action.clipboardPasteAction', 0)<CR>
-xnoremap <leader>sp <Cmd>call VSCodeNotifyVisual('editor.action.clipboardPasteAction', 0)<CR>
+nnoremap <leader>sp <Cmd>call VSCodeCallVisual('editor.action.clipboardPasteAction', 0)<CR>
+xnoremap <leader>sp <Cmd>call VSCodeCallVisual('editor.action.clipboardPasteAction', 0)<CR>
 
 
 """ Code (c)
@@ -151,11 +188,11 @@ nmap <leader>cn <Cmd>call VSCodeNotify('editor.action.wordHighlight.next')<CR>
 nmap <leader>cN <Cmd>call VSCodeNotify('editor.action.wordHighlight.prev')<CR>
 
 " Rename symbol
-nmap <leader>cR <Cmd>call VSCodeNotify('editor.action.rename')<CR>
+nmap <leader>cR <Cmd>call VSCodeCall('editor.action.rename')<CR>
 
 " Toggle comment
-nnoremap <leader>cc <Cmd>call VSCodeNotify('editor.action.commentLine')<CR>
-xnoremap <leader>cc <Cmd>call VSCodeNotifyVisual('editor.action.commentLine', 0)<CR>
+nnoremap <leader>cc <Cmd>call VSCodeCall('editor.action.commentLine')<CR>
+xnoremap <leader>cc <Cmd>call VSCodeCallVisual('editor.action.commentLine', 0)<CR>
 
 
 endif
