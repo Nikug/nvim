@@ -96,6 +96,9 @@ nnoremap <leader>fa <Cmd>call VSCodeCall('workbench.action.files.saveAll')<CR>
 " Save file without formatting
 nnoremap <leader>fw <Cmd>call VSCodeCall('workbench.action.files.saveWithoutFormatting')<CR>
 
+" Format file
+nnoremap <leader>ff <Cmd>call VSCodeCall('editor.action.formatDocument')<CR>
+
 " New empty file
 nnoremap <leader>fn <Cmd>call VSCodeCall('workbench.action.files.newUntitledFile')<CR>
 
