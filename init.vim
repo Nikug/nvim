@@ -148,8 +148,8 @@ nnoremap <leader>gE <Cmd>call VSCodeNotify('editor.action.marker.prev')<CR>
 
 
 """ Select (s)
-nnoremap <leader>sa ggvG " Select all
-nnoremap <leader>sA mmggVGy'm " Select all and yank
+nnoremap <leader>sa gg^VG$ " Select all
+nnoremap <leader>sA mmgg^VG$y'm " Select all and yank
 
 " Copy selection to clipboard
 xnoremap <leader>sc <Cmd>call VSCodeCallVisual('editor.action.clipboardCopyAction', 0)<CR>
