@@ -35,7 +35,7 @@ function! VSCodeCallMoveLines(direction)
     return
   endif
   
-  " Call VS Code move liens
+  " Call VS Code move lines
   let removeVsCodeSelectionAfterCommand = 1
   let vsCodeCommand = 'editor.action.moveLines' . a:direction . 'Action'
   call VSCodeCallRange(vsCodeCommand, startLine, endLine, removeVsCodeSelectionAfterCommand)
@@ -66,14 +66,10 @@ nnoremap <leader>; <Cmd>call VSCodeNotify('workbench.action.showAllSymbols')<CR>
 xnoremap <leader>; <Cmd>call VSCodeNotify('workbench.action.showAllSymbols')<CR>
 
 " Move line/lines down
-" nnoremap <M-j> :m .+1<CR>==
-" xnoremap <M-j> :m '>+1<CR>gv=gv
 nmap <M-j> <Cmd>call VSCodeCall('editor.action.moveLinesDownAction')<CR>
 vmap <M-j> <Esc>:call VSCodeCallMoveLines('Down')<CR>
 
 " Move line/lines up
-" nnoremap <M-k> :m .-2<CR>==
-" xnoremap <M-k> :m '<-2<CR>gv=gv
 nmap <M-k> <Cmd>call VSCodeCall('editor.action.moveLinesUpAction')<CR>
 vmap <M-k> <Esc>:call VSCodeCallMoveLines('Up')<CR>
 
