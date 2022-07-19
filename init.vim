@@ -154,8 +154,10 @@ nnoremap <leader>sA mmgg^VG$y'm " Select all and yank
 xnoremap <leader>sc <Cmd>call VSCodeCallVisual('editor.action.clipboardCopyAction', 0)<CR>
 
 " Paste from clipboard
-nnoremap <leader>sp <Cmd>call VSCodeCallVisual('editor.action.clipboardPasteAction', 0)<CR>
-xnoremap <leader>sp <Cmd>call VSCodeCallVisual('editor.action.clipboardPasteAction', 0)<CR>
+nnoremap <leader>sp "+p
+xnoremap <leader>sp "+p
+nnoremap <leader>sP "+P
+xnoremap <leader>sP "+P
 
 
 """ Code (c)
