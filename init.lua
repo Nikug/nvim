@@ -1,15 +1,14 @@
-" Settings
+-- Settings
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.incsearch = true
 vim.opt.hlsearch = true
-vim.opt.nocompatible = true
+vim.g.nocompatible = true
 
-" Key mapping
-" nnoremap <SPACE> <Nop>
-vim.opt.mapleader = " "
-vim.opt.nottimeout = true
-vim.opt.notimeout = true
+-- Key mapping
+vim.g.mapleader = " "
+vim.g.nottimeout = true
+vim.g.notimeout = true
 
 if vim.g.vscode then
   require("vscode")
