@@ -7,8 +7,8 @@ vim.g.nocompatible = true
 
 -- Key mapping
 vim.g.mapleader = " "
-vim.g.nottimeout = true
-vim.g.notimeout = true
+vim.opt.ttimeout = false
+vim.opt.timeout = false
 
 if vim.g.vscode then
   require("vscode")
