@@ -4,6 +4,7 @@ set smartcase
 set incsearch
 set hlsearch
 set nocompatible
+set scrolloff=4
 
 " Key mapping
 " nnoremap <SPACE> <Nop>
