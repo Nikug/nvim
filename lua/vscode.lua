@@ -27,6 +27,10 @@ set_keymap('v', '<M-k>', [[<Esc><Cmd>lua require("utils").vscode_move_lines("Up"
 set_keymap('n', '<leader>/', '<Cmd>call VSCodeNotify("search.action.openEditor")<CR>')
 set_keymap('v', '<leader>/', '<Cmd>call VSCodeNotify("search.action.openEditor")<CR>')
 
+-- Yank ring cycles
+set_keymap('n', '<C-p>', '<Plug>yankstack_substitute_older_paste', { noremap = false })
+set_keymap('n', '<C-P>', '<Plug>yankstack_substitute_newer_paste', { noremap = false })
+
 
 ---- Neovim (n)
 -- Reload configuration
