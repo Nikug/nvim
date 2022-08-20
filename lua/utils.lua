@@ -7,41 +7,38 @@ function M.set_keymap(map, input, command, options)
 end
 
 function M.new_visual_selection(selectionStart, selectionEnd)
-  local command = string.format("'normal!%dGV%dG'", selectionStart, selectionEnd)
-  api.nvim_eval(command)
+  local command = string.format("'normal!%sGV%sG'", selectionStart, selectionEnd)
+  api.nvim_command(command)
 end
 
 function M.vscode_move_lines(direction)
-  local startLine = vim.fn.getpos("'<")
-  local endLine = vim.fn.getpos("'>")
-  startLine = startLine[2]
-  endLine = endLine[2]
-  local topLine = api.nvim_eval('line("w0")')
-  local botLine = api.nvim_eval('line("w$")')
+  local _, startRow = unpack(vim.fn.getpos("'<"))
+  local _, endRow = unpack(vim.fn.getpos("'>"))
+  local topLine = 1
+  local botLine = api.nvim_eval('line("$")')
   
   -- Check file boundaries
-  if startLine == topLine and direction == "Up" then
-    M.new_visual_selection(startLine, endLine)
+  if startRow == topLine and direction == "Up" then
+    M.new_visual_selection(startRow, endRow)
     return
-  elseif endLine == botLine and direction == "Down" then
-    M.new_visual_selection(startLine, endLine)
+  elseif endRow == botLine and direction == "Down" then
+    M.new_visual_selection(startRow, endRow)
     return
   end
   -- Call VS Code move lines
   local removeVsCodeSelectionAfterCommand = 1
   local vsCodeCommand = string.format("editor.action.moveLines%sAction", direction)
-  local vimCommand = string.format("call VSCodeCallRange('%s',%d,%d,%d)", vsCodeCommand, startLine, endLine, removeVsCodeSelectionAfterCommand)
-  print(vimCommand)
+  local vimCommand = string.format("call VSCodeCallRange('%s',%s,%s,%s)", vsCodeCommand, startRow, endRow, removeVsCodeSelectionAfterCommand)
   api.nvim_exec(vimCommand, false)
   
   -- Calculate new visual selection and update it
   local newStart, newEnd
   if direction == "Up" then
-    newStart = startLine - 1
-    newEnd = endLine - 1
+    newStart = startRow - 1
+    newEnd = endRow - 1
   else
-    newStart = startLine + 1
-    newEnd = endLine + 1
+    newStart = startRow + 1
+    newEnd = endRow + 1
   end
   
   M.new_visual_selection(newStart, newEnd)

@@ -1,6 +1,5 @@
 local api = vim.api
 
-local vscode_move_lines = require("utils").vscode_move_lines
 local set_keymap = require("utils").set_keymap
 
 ---- General
@@ -18,11 +17,11 @@ set_keymap('x', '<leader>;', '<Cmd>call VSCodeNotify("workbench.action.showAllSy
 
 -- Move line/lines down
 set_keymap('n', '<M-j>', '<Cmd>call VSCodeCall("editor.action.moveLinesDownAction")<CR>')
-set_keymap('v', '<M-j>', [[<Cmd>lua vscode_move_lines("Down")<CR>]])
+set_keymap('v', '<M-j>', [[<Esc><Cmd>lua require("utils").vscode_move_lines("Down")<CR>]])
 
 -- Move line/lines up
 set_keymap('n', '<M-k>', '<Cmd>call VSCodeCall("editor.action.moveLinesUpAction")<CR>')
-set_keymap('v', '<M-k>', [[<Cmd>lua vscode_move_lines("Up")<CR>]])
+set_keymap('v', '<M-k>', [[<Esc><Cmd>lua require("utils").vscode_move_lines("Up")<CR>]])
 
 -- Find in all files
 set_keymap('n', '<leader>/', '<Cmd>call VSCodeNotify("search.action.openEditor")<CR>')
@@ -30,7 +29,8 @@ set_keymap('v', '<leader>/', '<Cmd>call VSCodeNotify("search.action.openEditor")
 
 ---- Neovim (n)
 -- Reload configuration
-set_keymap('n', '<leader>ns', '<Cmd>source .<CR>')
+set_keymap('n', '<leader>ns', '<Cmd>source<CR>')
+set_keymap('n', '<leader>nl', '<Cmd>luafile<CR>')
 
 
 ---- File (f)
