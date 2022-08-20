@@ -7,8 +7,9 @@ function M.set_keymap(map, input, command, options)
 end
 
 function M.new_visual_selection(selectionStart, selectionEnd)
-  local command = string.format("'normal!%sGV%sG'", selectionStart, selectionEnd)
-  api.nvim_command(command)
+    vim.fn.setpos(".", { 0 , selectionStart, 0 })
+    api.nvim_command("normal! v")
+    vim.fn.setpos(".", { 0 , selectionEnd, 2147483647 })
 end
 
 function M.vscode_move_lines(direction)

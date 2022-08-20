@@ -27,6 +27,7 @@ set_keymap('v', '<M-k>', [[<Esc><Cmd>lua require("utils").vscode_move_lines("Up"
 set_keymap('n', '<leader>/', '<Cmd>call VSCodeNotify("search.action.openEditor")<CR>')
 set_keymap('v', '<leader>/', '<Cmd>call VSCodeNotify("search.action.openEditor")<CR>')
 
+
 ---- Neovim (n)
 -- Reload configuration
 set_keymap('n', '<leader>ns', '<Cmd>source<CR>')
