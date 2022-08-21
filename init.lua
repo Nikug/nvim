@@ -10,12 +10,6 @@ vim.g.mapleader = " "
 vim.opt.ttimeout = false
 vim.opt.timeout = false
 
-if vim.g.vscode then
-  require("vscode")
-else 
-  require("nvim")
-end
-
 -- Plugins (Plugged)
 vim.api.nvim_exec([[
 """ Automatically load Plugged and install plugins
@@ -28,9 +22,13 @@ endif
 "" Plugins
 call plug#begin()
 
-Plug 'tpope/vim-surround'
 Plug 'justinmk/vim-sneak'
 Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'tpope/vim-surround'
+
+if !exists('g:vscode')
+  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+endif
 
 call plug#end()
 
@@ -40,3 +38,9 @@ map F <Plug>Sneak_F
 map t <Plug>Sneak_t
 map T <Plug>Sneak_T
 ]], true)
+
+if vim.g.vscode then
+  require("vscode")
+else 
+  require("nvim")
+end

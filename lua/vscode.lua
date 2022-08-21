@@ -166,3 +166,13 @@ set_keymap('n', '<leader>cR', '<Cmd>call VSCodeCall("editor.action.rename")<CR>'
 -- Toggle comment
 set_keymap('n', '<leader>cc', '<Cmd>call VSCodeCall("editor.action.commentLine")<CR>')
 set_keymap('x', '<leader>cc', '<Cmd>call VSCodeCallVisual("editor.action.commentLine", 0)<CR>')
+
+---- Open (o)
+-- Open file
+set_keymap('n', '<leader>of', '<Cmd>call VSCodeCall("workbench.action.files.openFile")<CR>')
+
+-- Open folder
+set_keymap('n', '<leader>oF', '<Cmd>call VSCodeCall("workbench.action.files.openFolder")<CR>')
+--
+-- Open recent
+set_keymap('n', '<leader>or', '<Cmd>call VSCodeCall("workbench.action.openRecent")<CR>')
