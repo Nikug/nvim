@@ -35,7 +35,7 @@ set_keymap('n', '<C-P>', '<Plug>yankstack_substitute_newer_paste', { noremap = f
 ---- Neovim (n)
 -- Reload configuration
 set_keymap('n', '<leader>ns', '<Cmd>source<CR>')
-set_keymap('n', '<leader>nl', '<Cmd>luafile<CR>')
+set_keymap('n', '<leader>nl', '<Cmd>luafile $VIMRC/init.lua<CR>')
 
 
 ---- File (f)

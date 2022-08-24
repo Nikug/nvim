@@ -10,34 +10,8 @@ vim.g.mapleader = " "
 vim.opt.ttimeout = false
 vim.opt.timeout = false
 
--- Plugins (Plugged)
-vim.api.nvim_exec([[
-""" Automatically load Plugged and install plugins
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-"" Plugins
-call plug#begin()
-
-Plug 'justinmk/vim-sneak'
-Plug 'maxbrunsfeld/vim-yankstack'
-Plug 'tpope/vim-surround'
-
-if !exists('g:vscode')
-  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-endif
-
-call plug#end()
-
-""" Plugin mappings
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
-]], true)
+-- Plugins (Packer)
+require("plugins")
 
 if vim.g.vscode then
   require("vscode")
