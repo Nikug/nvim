@@ -1,6 +1,8 @@
 local api = vim.api
 
 local set_keymap = require("utils").set_keymap
+vim.opt.timeout = false
+vim.opt.ttimeout = false
 
 ---- General
 -- Open VSCode quick menu

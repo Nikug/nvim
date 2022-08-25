@@ -7,8 +7,6 @@ vim.g.nocompatible = true
 
 -- Key mapping
 vim.g.mapleader = " "
-vim.opt.ttimeout = false
-vim.opt.timeout = false
 
 -- Plugins (Packer)
 require("plugins")
