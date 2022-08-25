@@ -45,13 +45,14 @@ wk.register({
     f = {
       name = 'File',
       s = { '<Cmd>w<CR>', 'Save' },
+      S = { [[<Cmd>lua require('utils').save_as()<CR>]], 'Save as' },
       w = { '', 'Save without formatting' },
       a = { '', 'Save all' },
       q = { '<Cmd>wq<CR>', 'Save and close file' },
       Q = { '<Cmd>q!<CR>', 'Close file without saving' },
       f = { '', 'Format' },
       l = { '', 'Lint' },
-      n = { '', 'New file' },
+      n = { '<Cmd>enew<CR>', 'New file' },
       v = {'<Cmd>NvimTreeFindFile<CR>', 'View'},
     },
 

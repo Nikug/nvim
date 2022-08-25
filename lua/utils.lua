@@ -45,4 +45,22 @@ function M.vscode_move_lines(direction)
   M.new_visual_selection(newStart, newEnd)
 end
 
+function M.save_as()
+  local path = vim.fn.expand('%:p')
+  if path == ""  then
+    path = vim.fn.expand('#:p:h') .. "/"
+  end
+  if path == "/" then
+    path = "~/"
+  end
+
+  vim.ui.input({ prompt = 'Save as: ', default = path }, function(file)
+    if file == nil then
+      print('File save cancelled')
+      return
+    end
+    vim.cmd(string.format('saveas %s', file))
+  end)
+end
+
 return M
