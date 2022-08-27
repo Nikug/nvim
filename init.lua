@@ -13,6 +13,6 @@ require("plugins")
 
 if vim.g.vscode then
   require("vscode")
-else 
+else
   require("nvim")
 end

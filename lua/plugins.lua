@@ -7,15 +7,16 @@ return require('packer').startup(function(use)
 
   -- Neovim only
   if not vim.g.vscode then
-    use { 'folke/tokyonight.nvim', branch = 'main'}
-    use {
-      'kyazdani42/nvim-tree.lua',
-      requires = { 'kyazdani42/nvim-web-devicons' },
-      tag = 'nightly'
-    }
+    use { 'folke/tokyonight.nvim', branch = 'main' }
+    use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' }, tag = 'nightly' }
     use { 'junegunn/fzf', run = './install --bin' }
-    use { 'ibhagwan/fzf-lua', requires = { 'kyazdani42/nvim-web-devicons' }}
-    use { 'folke/which-key.nvim', config = function() require('which-key').setup { } end }
+    use { 'ibhagwan/fzf-lua', requires = { 'kyazdani42/nvim-web-devicons' } }
+    use { 'folke/which-key.nvim', config = function() require('which-key').setup {} end }
+    use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup {} end }
+
+    -- LSP
+    use { 'williamboman/mason.nvim' }
+    use { 'williamboman/mason-lspconfig.nvim', requires = { 'williamboman/mason.nvim' } }
+    use { 'neovim/nvim-lspconfig' }
   end
 end)
-
