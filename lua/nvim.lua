@@ -27,6 +27,13 @@ require("nvim-tree").setup({
 require('mason').setup()
 require('mason-lspconfig').setup({ automatic_installation = true })
 require('lsp-config').setup()
+require('nvim-treesitter.configs').setup({
+  ensure_installed = { 'lua', 'python', 'vim', 'html', 'javascript', 'typescript', 'vue' },
+  auto_install = true,
+  highlight = {
+    enable = true
+  }
+})
 
 
 local wk = require('which-key')

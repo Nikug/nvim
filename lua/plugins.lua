@@ -15,8 +15,12 @@ return require('packer').startup(function(use)
     use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup {} end }
 
     -- LSP
-    use { 'williamboman/mason.nvim' }
+    use 'williamboman/mason.nvim'
     use { 'williamboman/mason-lspconfig.nvim', requires = { 'williamboman/mason.nvim' } }
-    use { 'neovim/nvim-lspconfig' }
+    use 'neovim/nvim-lspconfig'
+
+    -- Treesitter
+    use { 'nvim-treesitter/nvim-treesitter',
+      run = function() require('nvim-treesitter.install').update({ with_sync = true }) end }
   end
 end)

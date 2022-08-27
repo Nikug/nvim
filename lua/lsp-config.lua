@@ -15,6 +15,7 @@ local servers = {
   },
   tsserver = {},
   vimls = {},
+  volar = {}
 }
 
 local function on_attach(client, buffer_number)
