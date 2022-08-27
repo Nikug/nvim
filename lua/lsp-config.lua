@@ -23,12 +23,16 @@ local function on_attach(client, buffer_number)
   vim.api.nvim_buf_set_option(buffer_number, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
 end
 
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 local options = {
   on_attach = on_attach,
   flags = {
     debounce_text_changes = 150,
   },
+  capabilities = capabilities
 }
+
 
 function M.setup()
   for server_name, _ in pairs(servers) do

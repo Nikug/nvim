@@ -34,6 +34,15 @@ require('nvim-treesitter.configs').setup({
     enable = true
   }
 })
+require('snippy').setup({
+  mapipngs = {
+    is = {
+      ['<Tab>'] = 'expand_or_advance',
+      ['<S-Tab>'] = 'previous',
+    }
+  }
+})
+require('cmp-config').setup()
 
 
 local wk = require('which-key')

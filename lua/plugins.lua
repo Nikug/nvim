@@ -14,6 +14,16 @@ return require('packer').startup(function(use)
     use { 'folke/which-key.nvim', config = function() require('which-key').setup {} end }
     use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup {} end }
     use { 'numToStr/Comment.nvim', config = function() require('Comment').setup({ mappings = false }) end }
+    use { 'dcampos/nvim-snippy' }
+    use { 'hrsh7th/nvim-cmp', requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'dcampos/nvim-snippy'
+    },
+      config = function() require('config.cmp') end
+    }
 
     -- LSP
     use 'williamboman/mason.nvim'
