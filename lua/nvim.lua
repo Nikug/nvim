@@ -113,7 +113,7 @@ wk.register({
       n = { '<Cmd>lua vim.lsp.buf.goto_next()<CR>', 'Next' },
       N = { '<Cmd>lua vim.lsp.buf.goto_prev()<CR>', 'previous' },
       R = { '<Cmd>lua vim.lsp.buf.rename()<CR>', 'Rename symbol' },
-      c = { '<Cmd>lua vim.lsp.buf.comment()<CR>', 'Toggle comment' },
+      c = { '<Plug>(comment_toggle_linewise_current)', 'Toggle comment' },
       e = { '<Cmd>lua vim.diagnostic.goto_next()<CR>', 'Next error' },
       E = { '<Cmd>lua vim.diagnostic.goto_prev()<CR>', 'Previous error' },
     },
@@ -137,7 +137,7 @@ wk.register({
   ['<leader>'] = {
     c = {
       name = 'Code',
-      c = { '', 'Toggle comment' },
+      c = { '<Plug>(comment_toggle_linewise_visual)', 'Toggle comment' },
     },
     s = {
       name = 'Select',

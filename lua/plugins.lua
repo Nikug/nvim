@@ -13,6 +13,7 @@ return require('packer').startup(function(use)
     use { 'ibhagwan/fzf-lua', requires = { 'kyazdani42/nvim-web-devicons' } }
     use { 'folke/which-key.nvim', config = function() require('which-key').setup {} end }
     use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup {} end }
+    use { 'numToStr/Comment.nvim', config = function() require('Comment').setup({ mappings = false }) end }
 
     -- LSP
     use 'williamboman/mason.nvim'
