@@ -5,6 +5,7 @@ local cmp = require('cmp')
 local select_options = { behavior = cmp.SelectBehavior.Select }
 
 function M.setup()
+  print('setting up cmp')
   cmp.setup({
     snippet = {
       expand = function(args)
@@ -16,26 +17,25 @@ function M.setup()
       documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
-      ['<C-space>'] = cmp.mapping.complete(),
-      ['<tab>'] = cmp.mapping.confirm({ select = true }),
-      ['<esc>'] = cmp.mapping.abort(),
-      ['<up>'] = cmp.mapping.select_prev_item(select_options),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+      ['<Esc>'] = cmp.mapping.abort(),
+      ['<Up>'] = cmp.mapping.select_prev_item(select_options),
       ['<C-k>'] = cmp.mapping.select_prev_item(select_options),
-      ['<down>'] = cmp.mapping.select_next_item(select_options),
+      ['<Down>'] = cmp.mapping.select_next_item(select_options),
       ['<C-j>'] = cmp.mapping.select_next_item(select_options),
     }),
     formatting = {
       fields = { 'menu', 'abbr', 'kind' }
     },
-    sources = {
-      cmp.config.sources({
-        { name = 'snippy' },
-        { name = 'nvim_lsp' },
-        { name = 'buffer' },
-        { name = 'path' },
-        { name = 'cmdline' },
-      })
-    }
+    sources = cmp.config.sources({
+      { name = 'snippy' },
+      { name = 'nvim_lsp' },
+      { name = 'nvim_lua' },
+      { name = 'buffer' },
+      { name = 'path' },
+      { name = 'cmdline' },
+    })
   })
 end
 

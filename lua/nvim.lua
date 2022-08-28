@@ -35,7 +35,7 @@ require('nvim-treesitter.configs').setup({
   }
 })
 require('snippy').setup({
-  mapipngs = {
+  mappings = {
     is = {
       ['<Tab>'] = 'expand_or_advance',
       ['<S-Tab>'] = 'previous',
@@ -44,12 +44,11 @@ require('snippy').setup({
 })
 require('cmp-config').setup()
 
-
 local wk = require('which-key')
 -- Normal mode
 wk.register({
   ['<leader>'] = {
-    ['<leader>'] = { '<Cmd>FzfLua files<CR>', 'Search files' },
+    ['<leader>'] = { '<Cmd>FzfLua git_files<CR>', 'Search files' },
     b = { '<Cmd>FzfLua buffers<CR>', 'Search buffers' },
     ['/'] = { '<Cmd>FzfLua live_grep<CR>', 'Search text' },
 
