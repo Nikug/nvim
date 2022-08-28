@@ -32,6 +32,10 @@ require('nvim-treesitter.configs').setup({
   auto_install = true,
   highlight = {
     enable = true
+  },
+  refactor = {
+    highlight_definitions = { enable = true },
+    navigation = { enable = true },
   }
 })
 require('snippy').setup({
@@ -44,9 +48,9 @@ require('snippy').setup({
 })
 require('cmp-config').setup()
 
-local wk = require('which-key')
+local which_key = require('which-key')
 -- Normal mode
-wk.register({
+which_key.register({
   ['<leader>'] = {
     ['<leader>'] = { '<Cmd>FzfLua git_files<CR>', 'Search files' },
     b = { '<Cmd>FzfLua buffers<CR>', 'Search buffers' },
@@ -118,8 +122,8 @@ wk.register({
       i = { '<Cmd>lua vim.lsp.buf.implementation()<CR>', 'Implementation' },
       r = { '<Cmd>lua vim.lsp.buf.references()<CR>', 'References' },
       t = { '<Cmd>lua vim.lsp.buf.declaration()<CR>', 'Type definition' },
-      n = { '<Cmd>lua vim.lsp.buf.goto_next()<CR>', 'Next' },
-      N = { '<Cmd>lua vim.lsp.buf.goto_prev()<CR>', 'previous' },
+      n = { [[<Cmd>lua require('nvim-treesitter-refactor.navigation').goto_next_usage()<CR>]], 'Next' },
+      N = { [[<Cmd>lua require('nvim-treesitter-refactor.navigation').goto_previous_usage()<CR>]], 'Previous' },
       R = { '<Cmd>lua vim.lsp.buf.rename()<CR>', 'Rename symbol' },
       c = { '<Plug>(comment_toggle_linewise_current)', 'Toggle comment' },
       e = { '<Cmd>lua vim.diagnostic.goto_next()<CR>', 'Next error' },
@@ -139,7 +143,7 @@ wk.register({
 }, { mode = 'n' })
 
 -- Visual mode
-wk.register({
+which_key.register({
   ['<M-j>'] = { [[:m '>+1<CR>gv=gv]], 'Move lines down' },
   ['<M-k>'] = { [[:m '<-2<CR>gv=gv]], 'Move lines down' },
   ['<leader>'] = {
