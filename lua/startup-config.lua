@@ -9,7 +9,6 @@ function M.setup()
     dashboard.button("<leadler>qq", "Quit NVIM"),
   }
   require('alpha').setup(dashboard.config)
-
 end
 
 return M

@@ -98,8 +98,10 @@ function M.set_working_directory()
       print('Changing directory cancelled')
       return
     end
-    vim.cmd('wqa')
+    vim.cmd('wa')
+    vim.cmd('bufdo bwipeout')
     vim.cmd(string.format('cd %s', newPath))
+    require('alpha').start(false)
   end)
 end
 

@@ -57,11 +57,12 @@ which_key.register({
   ['<leader>'] = {
     ['<leader>'] = { '<Cmd>FzfLua git_files<CR>', 'Search files' },
     b = { '<Cmd>FzfLua buffers<CR>', 'Search buffers' },
+    a = { '<Cmd>FzfLua files<CR>', 'Search all files' },
     ['/'] = { '<Cmd>FzfLua live_grep<CR>', 'Search text' },
 
 
-    ['<C-p>'] = { '<Plug>yankstack_substitute_older_paste', 'Paste older' },
-    ['<C-P>'] = { '<Plug>yankstack_substitute_newer_paste', 'Paste newer' },
+    ['<C-p>'] = { '<Plug>yankstack_substitute_older_paste<CR>', 'Paste older' },
+    ['<C-P>'] = { '<Plug>yankstack_substitute_newer_paste<CR>', 'Paste newer' },
 
     l = { '<Cmd>bn<CR>', 'Next buffer' },
     h = { '<Cmd>bp<CR>', 'Previous buffer' },
