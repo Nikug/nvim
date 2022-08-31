@@ -87,4 +87,20 @@ function M.new_file()
   end)
 end
 
+function M.set_working_directory()
+  local path = vim.fn.expand('%:p:h')
+  if path == "/" then
+    path = "~/"
+  end
+
+  vim.ui.input({ prompt = 'Open folder: ', default = path }, function(newPath)
+    if newPath == nil then
+      print('Changing directory cancelled')
+      return
+    end
+    vim.cmd('wqa')
+    vim.cmd(string.format('cd %s', newPath))
+  end)
+end
+
 return M

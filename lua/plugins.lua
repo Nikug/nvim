@@ -25,6 +25,10 @@ return require('packer').startup(function(use)
         'dcampos/cmp-snippy'
       }
     }
+    use { 'goolord/alpha-nvim',
+      requires = { 'kyazdani42/nvim-web-devicons' },
+      config = function() require('startup-config').setup() end
+    }
 
     -- LSP
     use 'williamboman/mason.nvim'

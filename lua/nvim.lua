@@ -25,7 +25,10 @@ require("nvim-tree").setup({
   }
 })
 require('mason').setup()
-require('mason-lspconfig').setup({ automatic_installation = true })
+require('mason-lspconfig').setup({
+  automatic_installation = true,
+  ensure_installed = { "prettier", "eslint" }
+})
 require('lsp-config').setup()
 require('nvim-treesitter.configs').setup({
   ensure_installed = { 'lua', 'python', 'vim', 'html', 'javascript', 'typescript', 'vue' },
@@ -68,11 +71,11 @@ which_key.register({
       s = { [[<Cmd>lua require('utils').save()<CR>]], 'Save' },
       S = { [[<Cmd>lua require('utils').save_as()<CR>]], 'Save as' },
       w = { '<Cmd>w<CR>', 'Save without formatting' },
-      a = { '', 'Save all' },
+      a = { '<Cmd>wa<CR>', 'Save all' },
       q = { '<Cmd>wq<CR>', 'Save and close file' },
       Q = { '<Cmd>q!<CR>', 'Close file without saving' },
       f = { '<Cmd>lua vim.lsp.buf.formatting()<CR>', 'Format' },
-      l = { '', 'Lint' },
+      l = { '<Cmd>lua vim.lsp.buf.lint()<CR>', 'Lint' },
       n = { [[<Cmd>enew<CR>]], 'New buffer' },
       N = { [[<Cmd>lua require('utils').new_file()<CR>]], 'New file' },
       v = { '<Cmd>NvimTreeFindFile<CR>', 'View' },
@@ -135,6 +138,18 @@ which_key.register({
       i = { '<Cmd>LspInfo<CR>', 'Info' },
       r = { '<Cmd>LspRestart<CR>', 'Restart' },
       m = { '<Cmd>Mason<CR>', 'Mason' },
+    },
+
+    o = {
+      name = "Open",
+      f = { '<Cmd>FzfLua files<CR>', 'File' },
+      F = { [[<Cmd>lua require('utils').set_working_directory()<CR>]], 'Folder' }
+    },
+
+    q = {
+      name = "Quit",
+      q = { '<Cmd>wqa<CR>', 'Save & Quit' },
+      Q = { '<Cmd>qa!<CR>', 'Quit without saving' },
     }
   },
 
