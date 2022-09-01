@@ -5,7 +5,10 @@ function M.setup()
 	-- Normal mode
 	which_key.register({
 		["<leader>"] = {
-			["<leader>"] = { "<Cmd>FzfLua git_files<CR>", "Search files" },
+			["<leader>"] = {
+				"<Cmd>lua require('fzf-lua').git_files({ cmd = 'git ls-files --exclude-standard --cached --others' })<CR>",
+				"Search files",
+			},
 			b = { "<Cmd>FzfLua buffers<CR>", "Search buffers" },
 			a = { "<Cmd>FzfLua files<CR>", "Search all files" },
 			["/"] = { "<Cmd>FzfLua live_grep<CR>", "Search text" },
@@ -45,14 +48,15 @@ function M.setup()
 			t = {
 				name = "Tab",
 				o = { "<Cmd>w|%bd|e#<CR>", "Close others" },
-				k = { "<Cmd>q<CR>", "Close" },
-				K = { "<Cmd>q!<CR>", "Close without saving" },
+				k = { "<Cmd>bd<CR>", "Close" },
+				K = { "<Cmd>bd!<CR>", "Close without saving" },
 			},
 
 			w = {
 				name = "Window",
 				s = { "<C-w>s|<C-w>j", "Split horizontal" },
 				v = { "<C-w>v|<C-w>l", "Split vertical" },
+				K = { "<Cmd>q<CR>", "Close window" },
 				j = { "<C-w>j", "Move down" },
 				k = { "<C-w>k", "Move up" },
 				h = { "<C-w>h", "Move left" },
@@ -70,11 +74,15 @@ function M.setup()
 			c = {
 				name = "Code",
 				h = { "<Cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
-				a = { "<Cmd>lua vim.lsp.buf.code_action()<CR>", "Actions" },
-				d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
-				i = { "<Cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation" },
-				r = { "<Cmd>lua vim.lsp.buf.references()<CR>", "References" },
-				t = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Type definition" },
+				a = { "<Cmd>FzfLua lsp_code_actions<CR>", "Actions" },
+				d = { "<Cmd>FzfLua lsp_definitions<CR>", "Definition" },
+				i = { "<Cmd>FzfLua lsp_implementations<CR>", "Implementation" },
+				r = { "<Cmd>FzfLua lsp_references<CR>", "References" },
+				t = { "<Cmd>FzfLua lsp_typedefs<CR>", "Type definition" },
+				s = {
+					"<Cmd>lua require('fzf-lua').lsp_live_workspace_symbols({ file_ignore_patterns={ 'node_modules' }})<CR>",
+					"Symbols",
+				},
 				n = { [[<Cmd>lua require('nvim-treesitter-refactor.navigation').goto_next_usage()<CR>]], "Next" },
 				N = {
 					[[<Cmd>lua require('nvim-treesitter-refactor.navigation').goto_previous_usage()<CR>]],
@@ -104,6 +112,11 @@ function M.setup()
 				q = { "<Cmd>wqa<CR>", "Save & Quit" },
 				Q = { "<Cmd>qa!<CR>", "Quit without saving" },
 			},
+
+      g = {
+        name = "Git",
+        g = { "<Cmd>Neogit<CR>", "Git" }
+      }
 		},
 
 		["<M-j>"] = { ":m .+1<CR>==", "Move lines down" },
