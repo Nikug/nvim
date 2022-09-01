@@ -27,12 +27,15 @@ require("nvim-tree").setup({
 		dotfiles = true,
 	},
 })
+
 require("mason").setup()
 require("mason-lspconfig").setup({
 	automatic_installation = true,
 	ensure_installed = { "prettier", "eslint" },
 })
+
 require("lsp-config").setup()
+
 require("nvim-treesitter.configs").setup({
 	ensure_installed = { "lua", "python", "vim", "html", "javascript", "typescript", "vue" },
 	auto_install = true,
@@ -44,6 +47,7 @@ require("nvim-treesitter.configs").setup({
 		navigation = { enable = true },
 	},
 })
+
 require("snippy").setup({
 	mappings = {
 		is = {
@@ -52,4 +56,5 @@ require("snippy").setup({
 		},
 	},
 })
+
 require("cmp-config").setup()
