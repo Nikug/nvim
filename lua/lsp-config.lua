@@ -1,44 +1,54 @@
 local M = {}
 
 local servers = {
-  html = {},
-  jsonls = {},
-  pyright = {},
-  sumneko_lua = {
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = { 'vim' }
-        }
-      }
-    }
-  },
-  tsserver = {},
-  vimls = {},
-  volar = {},
+	html = {},
+	jsonls = {},
+	pyright = {},
+	sumneko_lua = {
+		settings = {
+			Lua = {
+				diagnostics = {
+					globals = { "vim" },
+				},
+			},
+		},
+	},
+	tsserver = {},
+	vimls = {},
+	volar = {},
 }
 
 local function on_attach(client, buffer_number)
-  vim.api.nvim_buf_set_option(buffer_number, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-  vim.api.nvim_buf_set_option(buffer_number, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
+	-- Disable formatting and use external formatter instead
+	-- from Null-ls
+	client.resolved_capabilities.document_formatting = false
+	client.resolved_capabilities.document_range_formatting = false
 end
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local options = {
-  on_attach = on_attach,
-  flags = {
-    debounce_text_changes = 150,
-  },
-  capabilities = capabilities
+	on_attach = on_attach,
+	flags = {
+		debounce_text_changes = 250,
+	},
+	capabilities = capabilities,
 }
 
-
 function M.setup()
-  for server_name, _ in pairs(servers) do
-    local opts = vim.tbl_deep_extend('force', options, servers[server_name])
-    require('lspconfig')[server_name].setup(opts)
-  end
+	for server_name, _ in pairs(servers) do
+		local opts = vim.tbl_deep_extend("force", options, servers[server_name])
+		require("lspconfig")[server_name].setup(opts)
+	end
+
+	local builtins = require("null-ls").builtins
+	require("null-ls").setup({
+		sources = {
+			builtins.diagnostics.eslint,
+			builtins.formatting.prettierd,
+			builtins.formatting.stylua,
+		},
+	})
 end
 
 return M
