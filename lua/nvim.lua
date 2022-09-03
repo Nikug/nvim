@@ -16,42 +16,42 @@ vim.cmd([[colorscheme tokyonight]])
 
 -- Setup plugins
 require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  view = {
-    adaptive_size = true,
-  },
-  filters = {
-    dotfiles = true,
-  },
+	sort_by = "case_sensitive",
+	view = {
+		adaptive_size = true,
+	},
+	filters = {
+		dotfiles = true,
+	},
 })
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-  automatic_installation = true,
-  ensure_installed = { "prettier", "eslint" },
+	automatic_installation = true,
+	ensure_installed = { "prettier", "eslint" },
 })
 
 require("lsp-config").setup()
 
 require("nvim-treesitter.configs").setup({
-  ensure_installed = { "lua", "python", "vim", "html", "javascript", "typescript", "vue" },
-  auto_install = true,
-  highlight = {
-    enable = true,
-  },
-  refactor = {
-    highlight_definitions = { enable = true },
-    navigation = { enable = true },
-  },
+	ensure_installed = { "lua", "python", "vim", "html", "javascript", "typescript", "vue" },
+	auto_install = true,
+	highlight = {
+		enable = true,
+	},
+	refactor = {
+		highlight_definitions = { enable = true },
+		navigation = { enable = true },
+	},
 })
 
 require("snippy").setup({
-  mappings = {
-    is = {
-      ["<Tab>"] = "expand_or_advance",
-      ["<S-Tab>"] = "previous",
-    },
-  },
+	mappings = {
+		is = {
+			["<Tab>"] = "expand_or_advance",
+			["<S-Tab>"] = "previous",
+		},
+	},
 })
 
 require("cmp-config").setup()

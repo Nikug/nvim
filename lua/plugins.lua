@@ -3,7 +3,7 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("justinmk/vim-sneak")
 	use("maxbrunsfeld/vim-yankstack")
-	use("tpope/vim-surround")
+	use({ "tpope/vim-surround", after = "vim-yankstack" })
 
 	-- Neovim only
 	if not vim.g.vscode then

@@ -113,10 +113,10 @@ function M.setup()
 				Q = { "<Cmd>qa!<CR>", "Quit without saving" },
 			},
 
-      g = {
-        name = "Git",
-        g = { "<Cmd>Neogit<CR>", "Git" }
-      }
+			g = {
+				name = "Git",
+				g = { "<Cmd>Neogit<CR>", "Git" },
+			},
 		},
 
 		["<M-j>"] = { ":m .+1<CR>==", "Move lines down" },
@@ -137,7 +137,7 @@ function M.setup()
 				c = { [["+y]], "Yank to clipboard" },
 			},
 		},
-	}, { mode = "v" })
+	}, { mode = "x" })
 end
 
 return M
