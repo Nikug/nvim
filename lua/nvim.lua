@@ -55,3 +55,4 @@ require("snippy").setup({
 })
 
 require("cmp-config").setup()
+require("lualine").setup()

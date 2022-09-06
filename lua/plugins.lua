@@ -54,6 +54,7 @@ return require("packer").startup(function(use)
 				require("startup-config").setup()
 			end,
 		})
+    use({"nvim-lualine/lualine.nvim", requires = { 'kyazdani42/nvim-web-devicons' }})
 
 		-- LSP
 		use("williamboman/mason.nvim")
