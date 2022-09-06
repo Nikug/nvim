@@ -70,6 +70,7 @@ function M.setup()
 			c = {
 				name = "Code",
 				h = { "<Cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
+				H = { "<Cmd>lua vim.diagnostic.open_float(nil, {focus=false})<CR>", "Hover diagnostics" },
 				a = { "<Cmd>FzfLua lsp_code_actions<CR>", "Actions" },
 				d = { "<Cmd>FzfLua lsp_definitions<CR>", "Definition" },
 				i = { "<Cmd>FzfLua lsp_implementations<CR>", "Implementation" },
