@@ -60,7 +60,7 @@ function M.save_as()
     path = "~/"
   end
 
-  vim.ui.input({ prompt = 'Save as: ', default = path }, function(file)
+  vim.ui.input({ prompt = 'Save as: ', default = path, completion = 'file' }, function(file)
     if file == nil then
       print('File save cancelled')
       return
@@ -78,12 +78,30 @@ function M.new_file()
     path = "~/"
   end
 
-  vim.ui.input({ prompt = 'New file: ', default = path }, function(file)
+  vim.ui.input({ prompt = 'New file: ', default = path, completion = 'file' }, function(file)
     if file == nil then
       print('New file cancelled')
       return
     end
     vim.cmd(string.format('enew %s', file))
+  end)
+end
+
+function M.set_working_directory()
+  local path = vim.fn.expand('%:p:h')
+  if path == "/" then
+    path = "~/"
+  end
+
+  vim.ui.input({ prompt = 'Open folder: ', default = path, completion = 'file' }, function(newPath)
+    if newPath == nil then
+      print('Changing directory cancelled')
+      return
+    end
+    vim.cmd('wa')
+    vim.cmd('bufdo bwipeout')
+    vim.cmd(string.format('cd %s', newPath))
+    require('alpha').start(false)
   end)
 end
 
