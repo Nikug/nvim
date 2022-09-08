@@ -140,6 +140,11 @@ function M.setup()
 			},
 		},
 	}, { mode = "x" })
+
+	-- Insert mode
+	which_key.register({
+		["<C-h>"] = { "<C-w>", "Delete word" },
+	}, { mode = "i" })
 end
 
 return M
