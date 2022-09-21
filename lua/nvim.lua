@@ -10,6 +10,9 @@ vim.opt.expandtab = true
 vim.opt.wrap = false
 vim.opt.timeoutlen = 250
 
+-- Setup clipboard
+vim.opt.clipboard = "unnamedplus"
+
 -- Setup theme
 vim.g.tokyonight_style = "night"
 vim.cmd([[colorscheme tokyonight]])

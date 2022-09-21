@@ -47,7 +47,7 @@ function M.setup()
 			t = {
 				name = "Tab",
 				o = { "<Cmd>w|%bd|e#<CR>", "Close others" },
-				k = { "<Cmd>bd<CR>", "Close" },
+				k = { "<Cmd>w|bd<CR>", "Close" },
 				K = { "<Cmd>bd!<CR>", "Close without saving" },
 			},
 
