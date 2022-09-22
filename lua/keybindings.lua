@@ -92,6 +92,7 @@ function M.setup()
 				c = { "<Plug>(comment_toggle_linewise_current)", "Toggle comment" },
 				e = { "<Cmd>lua vim.diagnostic.goto_next()<CR>", "Next error" },
 				E = { "<Cmd>lua vim.diagnostic.goto_prev()<CR>", "Previous error" },
+				f = { "za", "Toggle fold" },
 			},
 
 			L = {
