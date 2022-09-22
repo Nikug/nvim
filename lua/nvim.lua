@@ -55,6 +55,7 @@ require("snippy").setup({
 			["<S-Tab>"] = "previous",
 		},
 	},
+
 })
 
 require("cmp-config").setup()

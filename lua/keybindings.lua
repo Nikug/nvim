@@ -28,7 +28,7 @@ function M.setup()
 				Q = { "<Cmd>q!<CR>", "Close file without saving" },
 				f = { "<Cmd>lua vim.lsp.buf.formatting()<CR>", "Format" },
 				l = { "<Cmd>lua vim.lsp.buf.lint()<CR>", "Lint" },
-				n = { [[<Cmd>enew<CR>]], "New buffer" },
+				n = { [[<Cmd>enew|setl bt=nofile<CR>]], "New buffer" },
 				N = { [[<Cmd>lua require('utils').new_file()<CR>]], "New file" },
 				v = { "<Cmd>NvimTreeFindFile<CR>", "View" },
 			},
@@ -47,7 +47,7 @@ function M.setup()
 			t = {
 				name = "Tab",
 				o = { "<Cmd>w|%bd|e#<CR>", "Close others" },
-				k = { "<Cmd>w|bd<CR>", "Close" },
+				k = { [[<Cmd>lua require('utils').close_and_save_buffer()<CR>]], "Close" },
 				K = { "<Cmd>bd!<CR>", "Close without saving" },
 			},
 
