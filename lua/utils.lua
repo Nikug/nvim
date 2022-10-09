@@ -76,7 +76,8 @@ function M.save_as()
 			print("File save cancelled")
 			return
 		end
-		vim.cmd(string.format("saveas %s", file))
+		vim.cmd("w " .. file)
+		vim.cmd("e " .. file)
 	end)
 end
 
