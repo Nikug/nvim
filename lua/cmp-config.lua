@@ -35,7 +35,6 @@ function M.setup()
 			{ name = "nvim_lua" },
 			{ name = "buffer" },
 			{ name = "path" },
-			{ name = "cmdline" },
 		}),
 	})
 end
