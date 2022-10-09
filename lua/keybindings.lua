@@ -118,12 +118,12 @@ function M.setup()
 				name = "Git",
 				g = { "<Cmd>Neogit<CR>", "Git" },
 			},
+
+			p = { "<Cmd>YankyRingHistory<CR>", "Paste from history" },
 		},
 
 		["<M-j>"] = { ":m .+1<CR>==", "Move lines down" },
 		["<M-k>"] = { ":m .-2<CR>==", "Move lines up" },
-		["<C-p>"] = { "<Plug>yankstack_substitute_older_paste<CR>", "Paste older" },
-		["<C-P>"] = { "<Plug>yankstack_substitute_newer_paste<CR>", "Paste newer" },
 	}, { mode = "n" })
 
 	-- Visual mode

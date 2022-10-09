@@ -2,8 +2,13 @@ return require("packer").startup(function(use)
 	-- General
 	use("wbthomason/packer.nvim")
 	use("justinmk/vim-sneak")
-	use("maxbrunsfeld/vim-yankstack")
-	use({ "tpope/vim-surround", after = "vim-yankstack" })
+	use("tpope/vim-surround")
+	use({
+		"gbprod/yanky.nvim",
+		config = function()
+			require("yanky").setup({ ring = { history_length = 10 } })
+		end,
+	})
 
 	-- Neovim only
 	if not vim.g.vscode then
@@ -54,7 +59,7 @@ return require("packer").startup(function(use)
 				require("startup-config").setup()
 			end,
 		})
-    use({"nvim-lualine/lualine.nvim", requires = { 'kyazdani42/nvim-web-devicons' }})
+		use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
 
 		-- LSP
 		use("williamboman/mason.nvim")
