@@ -58,7 +58,7 @@ function M.save()
 		return
 	end
 
-	vim.cmd("lua vim.lsp.buf.formatting()")
+	vim.cmd("lua vim.lsp.buf.format()")
 	vim.cmd("w")
 end
 
@@ -134,7 +134,7 @@ function M.close_and_save_buffer()
 		return
 	end
 
-	vim.cmd("lua vim.lsp.buf.formatting()")
+	vim.cmd("lua vim.lsp.buf.format()")
 	vim.cmd("w")
 	vim.cmd("bd")
 end
