@@ -11,8 +11,7 @@ vim.opt.wrap = false
 vim.opt.timeoutlen = 250
 
 -- Setup theme
-vim.g.tokyonight_style = "night"
-vim.cmd([[colorscheme tokyonight]])
+vim.cmd([[colorscheme tokyonight-night]])
 
 -- Setup plugins
 require("nvim-tree").setup({
@@ -55,4 +54,8 @@ require("snippy").setup({
 })
 
 require("cmp-config").setup()
-require("lualine").setup()
+require("lualine").setup({
+	options = {
+		theme = "tokyonight",
+	},
+})
