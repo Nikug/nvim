@@ -13,6 +13,7 @@ return require("packer").startup(function(use)
 	-- Neovim only
 	if not vim.g.vscode then
 		use({ "folke/tokyonight.nvim", branch = "main" })
+		use({ "catppuccin/nvim", as = "catppuccin" })
 		use({ "kyazdani42/nvim-tree.lua", requires = { "kyazdani42/nvim-web-devicons" }, tag = "nightly" })
 		use({ "junegunn/fzf", run = "./install --bin" })
 		use({ "ibhagwan/fzf-lua", requires = { "kyazdani42/nvim-web-devicons" } })

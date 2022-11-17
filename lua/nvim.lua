@@ -12,7 +12,7 @@ vim.opt.wrap = false
 vim.opt.timeoutlen = 250
 
 -- Setup theme
-vim.cmd([[colorscheme tokyonight-night]])
+vim.cmd([[colorscheme catppuccin-mocha]])
 
 -- Setup plugins
 require("nvim-tree").setup({
@@ -27,8 +27,7 @@ require("nvim-tree").setup({
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-	automatic_installation = true,
-	ensure_installed = { "prettier", "eslint" },
+	automatic_installation = true
 })
 
 require("lsp-config").setup()

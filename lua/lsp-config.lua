@@ -26,7 +26,7 @@ local function on_attach(client, buffer_number)
 	client.server_capabilities.documentFormattingProvider = false
 end
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local options = {
 	on_attach = on_attach,
@@ -42,14 +42,7 @@ function M.setup()
 		require("lspconfig")[server_name].setup(opts)
 	end
 
-	local builtins = require("null-ls").builtins
-	require("null-ls").setup({
-		sources = {
-			builtins.diagnostics.eslint,
-			builtins.formatting.prettierd,
-			builtins.formatting.stylua,
-		},
-	})
+	require("null-ls").setup()
 end
 
 return M
