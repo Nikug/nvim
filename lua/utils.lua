@@ -58,7 +58,7 @@ function M.save()
 		return
 	end
 
-	vim.cmd("lua vim.lsp.buf.format()")
+	vim.lsp.buf.format({ async = false })
 	vim.cmd("w")
 end
 

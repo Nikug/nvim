@@ -27,7 +27,7 @@ require("nvim-tree").setup({
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-	automatic_installation = true
+	automatic_installation = true,
 })
 
 require("lsp-config").setup()

@@ -26,7 +26,7 @@ function M.setup()
 				a = { "<Cmd>wa<CR>", "Save all" },
 				q = { "<Cmd>wq<CR>", "Save and close file" },
 				Q = { "<Cmd>q!<CR>", "Close file without saving" },
-				f = { "<Cmd>lua vim.lsp.buf.formatting()<CR>", "Format" },
+				f = { "<Cmd>lua vim.lsp.buf.format()<CR>", "Format" },
 				l = { "<Cmd>lua vim.lsp.buf.lint()<CR>", "Lint" },
 				n = { [[<Cmd>enew|setl bt=nofile<CR>]], "New buffer" },
 				N = { [[<Cmd>lua require('utils').new_file()<CR>]], "New file" },

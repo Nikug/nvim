@@ -14,11 +14,12 @@ local servers = {
 		},
 	},
 	tsserver = {},
+	tailwindcss = {},
 	vimls = {},
 	volar = {},
 }
 
-local function on_attach(client, buffer_number)
+local function on_attach(client)
 	-- Disable formatting and use external formatter instead
 	-- from Null-ls
 	client.server_capabilities.document_formatting = false
@@ -42,7 +43,14 @@ function M.setup()
 		require("lspconfig")[server_name].setup(opts)
 	end
 
-	require("null-ls").setup()
+	local null_ls = require("null-ls")
+	null_ls.setup({
+		sources = {
+			null_ls.builtins.formatting.stylua,
+			null_ls.builtins.formatting.prettierd,
+			null_ls.builtins.diagnostics.eslint_d,
+		},
+	})
 end
 
 return M
