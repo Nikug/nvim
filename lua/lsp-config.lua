@@ -14,11 +14,12 @@ local servers = {
 		},
 	},
 	tsserver = {},
+	tailwindcss = {},
 	vimls = {},
 	volar = {},
 }
 
-local function on_attach(client, buffer_number)
+local function on_attach(client)
 	-- Disable formatting and use external formatter instead
 	-- from Null-ls
 	client.server_capabilities.document_formatting = false
@@ -26,7 +27,7 @@ local function on_attach(client, buffer_number)
 	client.server_capabilities.documentFormattingProvider = false
 end
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local options = {
 	on_attach = on_attach,
@@ -42,12 +43,12 @@ function M.setup()
 		require("lspconfig")[server_name].setup(opts)
 	end
 
-	local builtins = require("null-ls").builtins
-	require("null-ls").setup({
+	local null_ls = require("null-ls")
+	null_ls.setup({
 		sources = {
-			builtins.diagnostics.eslint,
-			builtins.formatting.prettierd,
-			builtins.formatting.stylua,
+			null_ls.builtins.formatting.stylua,
+			null_ls.builtins.formatting.prettierd,
+			null_ls.builtins.diagnostics.eslint_d,
 		},
 	})
 end

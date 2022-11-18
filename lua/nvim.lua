@@ -1,5 +1,6 @@
 -- Basic settings
-vim.wo.number = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.scrolloff = 10
 
 vim.opt.tabstop = 2
@@ -11,8 +12,7 @@ vim.opt.wrap = false
 vim.opt.timeoutlen = 250
 
 -- Setup theme
-vim.g.tokyonight_style = "night"
-vim.cmd([[colorscheme tokyonight]])
+vim.cmd([[colorscheme catppuccin-mocha]])
 
 -- Setup plugins
 require("nvim-tree").setup({
@@ -28,7 +28,6 @@ require("nvim-tree").setup({
 require("mason").setup()
 require("mason-lspconfig").setup({
 	automatic_installation = true,
-	ensure_installed = { "prettier", "eslint" },
 })
 
 require("lsp-config").setup()
@@ -55,3 +54,8 @@ require("snippy").setup({
 })
 
 require("cmp-config").setup()
+require("lualine").setup({
+	options = {
+		theme = "tokyonight",
+	},
+})

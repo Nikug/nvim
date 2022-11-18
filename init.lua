@@ -14,6 +14,9 @@ end
 -- Plugins (Packer)
 require("plugins")
 
+-- Universal keybindings
+require("default-keybindings").setup()
+
 if vim.g.vscode then
 	require("vscode")
 else

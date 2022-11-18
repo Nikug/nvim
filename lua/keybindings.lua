@@ -11,7 +11,10 @@ function M.setup()
 			},
 			b = { "<Cmd>FzfLua buffers<CR>", "Search buffers" },
 			a = { "<Cmd>FzfLua files<CR>", "Search all files" },
-			["/"] = { "<Cmd>FzfLua live_grep<CR>", "Search text" },
+			["/"] = {
+				[[<Cmd>lua require("fzf-lua").live_grep({ cmd = "rg -g '!{.git,node_modules}/'" })<CR>]],
+				"Search text",
+			},
 			l = { "<Cmd>bn<CR>", "Next buffer" },
 			h = { "<Cmd>bp<CR>", "Previous buffer" },
 
@@ -23,9 +26,9 @@ function M.setup()
 				a = { "<Cmd>wa<CR>", "Save all" },
 				q = { "<Cmd>wq<CR>", "Save and close file" },
 				Q = { "<Cmd>q!<CR>", "Close file without saving" },
-				f = { "<Cmd>lua vim.lsp.buf.formatting()<CR>", "Format" },
+				f = { "<Cmd>lua vim.lsp.buf.format()<CR>", "Format" },
 				l = { "<Cmd>lua vim.lsp.buf.lint()<CR>", "Lint" },
-				n = { [[<Cmd>enew<CR>]], "New buffer" },
+				n = { [[<Cmd>enew|setl bt=nofile<CR>]], "New buffer" },
 				N = { [[<Cmd>lua require('utils').new_file()<CR>]], "New file" },
 				v = { "<Cmd>NvimTreeFindFile<CR>", "View" },
 			},
@@ -44,7 +47,7 @@ function M.setup()
 			t = {
 				name = "Tab",
 				o = { "<Cmd>w|%bd|e#<CR>", "Close others" },
-				k = { "<Cmd>bd<CR>", "Close" },
+				k = { [[<Cmd>lua require('utils').close_and_save_buffer()<CR>]], "Close" },
 				K = { "<Cmd>bd!<CR>", "Close without saving" },
 			},
 
@@ -70,6 +73,7 @@ function M.setup()
 			c = {
 				name = "Code",
 				h = { "<Cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
+				H = { "<Cmd>lua vim.diagnostic.open_float(nil, {focus=false})<CR>", "Hover diagnostics" },
 				a = { "<Cmd>FzfLua lsp_code_actions<CR>", "Actions" },
 				d = { "<Cmd>FzfLua lsp_definitions<CR>", "Definition" },
 				i = { "<Cmd>FzfLua lsp_implementations<CR>", "Implementation" },
@@ -88,6 +92,7 @@ function M.setup()
 				c = { "<Plug>(comment_toggle_linewise_current)", "Toggle comment" },
 				e = { "<Cmd>lua vim.diagnostic.goto_next()<CR>", "Next error" },
 				E = { "<Cmd>lua vim.diagnostic.goto_prev()<CR>", "Previous error" },
+				f = { "za", "Toggle fold" },
 			},
 
 			L = {
@@ -113,12 +118,12 @@ function M.setup()
 				name = "Git",
 				g = { "<Cmd>Neogit<CR>", "Git" },
 			},
+
+			p = { "<Cmd>YankyRingHistory<CR>", "Paste from history" },
 		},
 
 		["<M-j>"] = { ":m .+1<CR>==", "Move lines down" },
 		["<M-k>"] = { ":m .-2<CR>==", "Move lines up" },
-		["<C-p>"] = { "<Plug>yankstack_substitute_older_paste<CR>", "Paste older" },
-		["<C-P>"] = { "<Plug>yankstack_substitute_newer_paste<CR>", "Paste newer" },
 	}, { mode = "n" })
 
 	-- Visual mode
@@ -136,6 +141,11 @@ function M.setup()
 			},
 		},
 	}, { mode = "x" })
+
+	-- Insert mode
+	which_key.register({
+		["<C-h>"] = { "<C-w>", "Delete word" },
+	}, { mode = "i" })
 end
 
 return M
