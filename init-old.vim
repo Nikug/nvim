@@ -96,6 +96,9 @@ nnoremap <leader>fw <Cmd>call VSCodeCall('workbench.action.files.saveWithoutForm
 " Format file
 nnoremap <leader>ff <Cmd>call VSCodeCall('editor.action.formatDocument')<CR>
 
+" Lint file
+nnoremap <leader>fl <Cmd>call VSCodeCall('eslint.executeAutofix')<CR>
+
 " New empty file
 nnoremap <leader>fn <Cmd>call VSCodeCall('workbench.action.files.newUntitledFile')<CR>
 

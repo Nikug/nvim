@@ -56,6 +56,9 @@ set_keymap('n', '<leader>fw', '<Cmd>call VSCodeCall("workbench.action.files.save
 -- Format file
 set_keymap('n', '<leader>ff', '<Cmd>call VSCodeCall("editor.action.formatDocument")<CR>')
 
+-- Lint file
+set_keymap('n', '<leader>fl', '<Cmd>call VSCodeCall("eslint.executeAutofix")<CR>')
+
 -- New empty file
 set_keymap('n', '<leader>fn', '<Cmd>call VSCodeCall("workbench.action.files.newUntitledFile")<CR>')
 
