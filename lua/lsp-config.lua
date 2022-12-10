@@ -16,7 +16,9 @@ local servers = {
 	tsserver = {},
 	tailwindcss = {},
 	vimls = {},
-	volar = {},
+	volar = {
+		filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+	},
 }
 
 local function on_attach(client)
@@ -46,9 +48,16 @@ function M.setup()
 	local null_ls = require("null-ls")
 	null_ls.setup({
 		sources = {
+			-- Formatters
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.prettierd,
+			null_ls.builtins.formatting.eslint_d,
+
+			-- Diagnostics
 			null_ls.builtins.diagnostics.eslint_d,
+
+			-- Code actions
+			null_ls.builtins.code_actions.eslint_d,
 		},
 	})
 end
