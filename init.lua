@@ -8,17 +8,17 @@ vim.g.nocompatible = true
 -- Key mapping
 vim.g.mapleader = " "
 if not vim.g.vscode then
-	require("keybindings").setup()
+	require("user.keybindings").setup()
 end
 
 -- Plugins (Packer)
-require("plugins")
+require("user.plugins")
 
 -- Universal keybindings
-require("default-keybindings").setup()
+require("user.default-keybindings").setup()
 
 if vim.g.vscode then
-	require("vscode")
+	require("user.vscode")
 else
-	require("nvim")
+	require("user.nvim")
 end

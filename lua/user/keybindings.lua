@@ -6,7 +6,7 @@ function M.setup()
 	which_key.register({
 		["<leader>"] = {
 			["<leader>"] = {
-				[[<Cmd>lua require("utils").search_files()<CR>]],
+				[[<Cmd>lua require("user.utils").search_files()<CR>]],
 				"Search files",
 			},
 			b = { "<Cmd>FzfLua buffers<CR>", "Search buffers" },
@@ -20,8 +20,8 @@ function M.setup()
 
 			f = {
 				name = "File",
-				s = { [[<Cmd>lua require('utils').save()<CR>]], "Save" },
-				S = { [[<Cmd>lua require('utils').save_as()<CR>]], "Save as" },
+				s = { [[<Cmd>lua require('user.utils').save()<CR>]], "Save" },
+				S = { [[<Cmd>lua require('user.utils').save_as()<CR>]], "Save as" },
 				w = { "<Cmd>w<CR>", "Save without formatting" },
 				a = { "<Cmd>wa<CR>", "Save all" },
 				q = { "<Cmd>wq<CR>", "Save and close file" },
@@ -29,13 +29,13 @@ function M.setup()
 				f = { "<Cmd>lua vim.lsp.buf.format()<CR>", "Format" },
 				l = { "<Cmd>lua vim.lsp.buf.lint()<CR>", "Lint" },
 				n = { [[<Cmd>enew|setl bt=nofile<CR>]], "New buffer" },
-				N = { [[<Cmd>lua require('utils').new_file()<CR>]], "New file" },
+				N = { [[<Cmd>lua require('user.utils').new_file()<CR>]], "New file" },
 				v = { "<Cmd>NvimTreeFindFile<CR>", "View" },
 			},
 
 			n = {
 				name = "Neovim",
-				l = { "<Cmd>luafile $VIMRC/init.lua<CR>", "Reload init.lua" },
+				r = { [[<Cmd>lua require("user.utils").reload_config()<CR>]], "Reload config" },
 			},
 
 			v = {
@@ -47,7 +47,7 @@ function M.setup()
 			t = {
 				name = "Tab",
 				o = { "<Cmd>w|%bd|e#<CR>", "Close others" },
-				k = { [[<Cmd>lua require('utils').close_and_save_buffer()<CR>]], "Close" },
+				k = { [[<Cmd>lua require('user.utils').close_and_save_buffer()<CR>]], "Close" },
 				K = { "<Cmd>bd!<CR>", "Close without saving" },
 			},
 
@@ -105,7 +105,7 @@ function M.setup()
 			o = {
 				name = "Open",
 				f = { "<Cmd>FzfLua files<CR>", "File" },
-				F = { [[<Cmd>lua require('utils').set_working_directory()<CR>]], "Folder" },
+				F = { [[<Cmd>lua require('user.utils').set_working_directory()<CR>]], "Folder" },
 			},
 
 			q = {

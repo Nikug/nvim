@@ -30,7 +30,7 @@ require("mason-lspconfig").setup({
 	automatic_installation = true,
 })
 
-require("lsp-config").setup()
+require("user.lsp-config").setup()
 
 require("nvim-treesitter.configs").setup({
 	ensure_installed = { "lua", "python", "vim", "html", "javascript", "typescript", "vue" },
@@ -53,7 +53,7 @@ require("snippy").setup({
 	},
 })
 
-require("cmp-config").setup()
+require("user.cmp-config").setup()
 require("lualine").setup({
 	options = {
 		theme = "tokyonight",

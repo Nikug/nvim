@@ -56,7 +56,7 @@ return require("packer").startup(function(use)
 			"goolord/alpha-nvim",
 			requires = { "kyazdani42/nvim-web-devicons" },
 			config = function()
-				require("startup-config").setup()
+				require("user.startup-config").setup()
 			end,
 		})
 		use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } })

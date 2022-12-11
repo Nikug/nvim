@@ -153,4 +153,18 @@ function M.search_files()
 	end
 end
 
+function M.reload_config()
+	print("Reloading user configuration...")
+	print("Modules:")
+	for name, _ in pairs(package.loaded) do
+		if name:match("^user.") and not name:match("nvim-tree") then
+			print("- " .. name)
+			package.loaded[name] = nil
+		end
+	end
+
+	dofile(vim.env.MYVIMRC)
+	print("Nvim configuration loaded.")
+end
+
 return M
