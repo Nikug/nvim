@@ -6,7 +6,7 @@ function M.setup()
 	which_key.register({
 		["<leader>"] = {
 			["<leader>"] = {
-				"<Cmd>lua require('fzf-lua').git_files({ cmd = 'git ls-files --exclude-standard --cached --others' })<CR>",
+				[[<Cmd>lua require("utils").search_files()<CR>]],
 				"Search files",
 			},
 			b = { "<Cmd>FzfLua buffers<CR>", "Search buffers" },

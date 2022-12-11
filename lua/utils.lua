@@ -13,8 +13,8 @@ function M.new_visual_selection(selectionStart, selectionEnd)
 end
 
 function M.vscode_move_lines(direction)
-	local _, startRow = unpack(vim.fn.getpos("'<"))
-	local _, endRow = unpack(vim.fn.getpos("'>"))
+	local _, startRow = table.unpack(vim.fn.getpos("'<"))
+	local _, endRow = table.unpack(vim.fn.getpos("'>"))
 	local topLine = 1
 	local botLine = api.nvim_eval('line("$")')
 
@@ -137,6 +137,20 @@ function M.close_and_save_buffer()
 	vim.cmd("lua vim.lsp.buf.format()")
 	vim.cmd("w")
 	vim.cmd("bd")
+end
+
+function M.is_in_git_repo()
+	vim.fn.system("git rev-parse --is-inside-work-tree")
+	return vim.v.shell_error == 0
+end
+
+function M.search_files()
+	local in_git = M.is_in_git_repo()
+	if in_git then
+		require("fzf-lua").git_files({ cmd = "git ls-files --exclude-standard --cached --others" })
+	else
+		require("fzf-lua").files()
+	end
 end
 
 return M
