@@ -17,7 +17,7 @@ local servers = {
 	tailwindcss = {},
 	vimls = {},
 	volar = {
-		filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+		filetypes = { "vue" },
 	},
 }
 
