@@ -147,7 +147,7 @@ end
 function M.search_files()
 	local in_git = M.is_in_git_repo()
 	if in_git then
-		require("fzf-lua").git_files({ cmd = "git ls-files --exclude-standard --cached --others" })
+		require("fzf-lua").git_files({ cmd = "git ls-files --others --cached --exclude-standard -- . ':!:*.yarn/**'" })
 	else
 		require("fzf-lua").files()
 	end

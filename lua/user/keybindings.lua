@@ -12,7 +12,7 @@ function M.setup()
 			b = { "<Cmd>FzfLua buffers<CR>", "Search buffers" },
 			a = { "<Cmd>FzfLua files<CR>", "Search all files" },
 			["/"] = {
-				[[<Cmd>lua require("fzf-lua").live_grep({ cmd = "rg -g '!{.git,node_modules}/'" })<CR>]],
+				[[<Cmd>lua require("fzf-lua").live_grep({ cmd = "rg -i -g '!{.git,node_modules}/'" })<CR>]],
 				"Search text",
 			},
 			l = { "<Cmd>bn<CR>", "Next buffer" },
