@@ -21,7 +21,7 @@ require("nvim-tree").setup({
 		adaptive_size = true,
 	},
 	filters = {
-		dotfiles = true,
+		dotfiles = false,
 	},
 })
 
