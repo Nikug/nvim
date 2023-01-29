@@ -19,6 +19,7 @@ local servers = {
 	volar = {
 		filetypes = { "vue" },
 	},
+	eslint = {},
 }
 
 local function on_attach(client)
@@ -51,13 +52,8 @@ function M.setup()
 			-- Formatters
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.prettierd,
-			null_ls.builtins.formatting.eslint_d,
-
 			-- Diagnostics
-			null_ls.builtins.diagnostics.eslint_d,
-
 			-- Code actions
-			null_ls.builtins.code_actions.eslint_d,
 		},
 	})
 end
