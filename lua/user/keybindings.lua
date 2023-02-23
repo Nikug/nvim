@@ -116,7 +116,7 @@ function M.setup()
 
 			g = {
 				name = "Git",
-				g = { "<Cmd>Neogit<CR>", "Git" },
+				g = { "<Cmd>G<CR>", "Git" },
 			},
 
 			p = { "<Cmd>YankyRingHistory<CR>", "Paste from history" },
