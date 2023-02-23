@@ -51,7 +51,7 @@ function M.setup()
 		sources = {
 			-- Formatters
 			null_ls.builtins.formatting.stylua,
-			null_ls.builtins.formatting.prettierd,
+			null_ls.builtins.formatting.prettier,
 			-- Diagnostics
 			-- Code actions
 		},

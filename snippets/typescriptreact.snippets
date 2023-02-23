@@ -10,3 +10,18 @@ snippet rfc "React functional component"
 	}
 snippet uset "UseTranslation hook"
 	const { t } = useTranslation${1}()
+snippet sc "SolidJS component"
+	import { Component } from "solid-js"
+
+	interface Props {
+	
+	}
+	
+	export const ${1:Component}: Component<Props> = (props) => {
+	
+		return (
+			<div>
+				${2}
+			</div>
+		)
+	}
