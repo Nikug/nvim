@@ -4,7 +4,7 @@ local servers = {
 	html = {},
 	jsonls = {},
 	pyright = {},
-	sumneko_lua = {
+	lua_ls = {
 		settings = {
 			Lua = {
 				diagnostics = {
@@ -51,7 +51,7 @@ function M.setup()
 		sources = {
 			-- Formatters
 			null_ls.builtins.formatting.stylua,
-			null_ls.builtins.formatting.prettier,
+			null_ls.builtins.formatting.prettierd,
 			-- Diagnostics
 			-- Code actions
 		},
