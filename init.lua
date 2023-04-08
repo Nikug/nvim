@@ -5,14 +5,14 @@ vim.opt.incsearch = true
 vim.opt.hlsearch = true
 vim.g.nocompatible = true
 
+-- Plugins (Packer)
+require("user.plugins")
+
 -- Key mapping
 vim.g.mapleader = " "
 if not vim.g.vscode then
 	require("user.keybindings").setup()
 end
-
--- Plugins (Packer)
-require("user.plugins")
 
 -- Universal keybindings
 require("user.default-keybindings").setup()
