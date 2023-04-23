@@ -14,7 +14,10 @@ local servers = {
 		},
 	},
 	tsserver = {},
-	tailwindcss = {},
+	tailwindcss = {
+		root_dir = require("lspconfig").util.root_pattern("tailwind.config.ts"),
+	},
+	-- unocss = { root_dir = require("lspconfig").util.root_pattern("uno.config.ts"), },
 	vimls = {},
 	volar = {
 		filetypes = { "vue" },
