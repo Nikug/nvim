@@ -127,18 +127,6 @@ function M.includes(array, value)
 	return false
 end
 
-function M.close_and_save_buffer()
-	local readonly_buffers = { "help", "nofile", "nowrite", "terminal", "prompt" }
-	if M.includes(readonly_buffers, vim.o.buftype) then
-		vim.cmd("bd")
-		return
-	end
-
-	vim.cmd("lua vim.lsp.buf.format()")
-	vim.cmd("w")
-	vim.cmd("bd")
-end
-
 function M.is_in_git_repo()
 	vim.fn.system("git rev-parse --is-inside-work-tree")
 	return vim.v.shell_error == 0

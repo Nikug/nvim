@@ -1,5 +1,3 @@
-local M = {}
-
 local servers = {
 	html = {},
 	jsonls = {},
@@ -43,7 +41,7 @@ local options = {
 	capabilities = capabilities,
 }
 
-function M.setup()
+local function setup()
 	for server_name, _ in pairs(servers) do
 		local opts = vim.tbl_deep_extend("force", options, servers[server_name])
 		require("lspconfig")[server_name].setup(opts)
@@ -61,4 +59,4 @@ function M.setup()
 	})
 end
 
-return M
+setup()
