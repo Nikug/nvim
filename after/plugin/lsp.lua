@@ -21,6 +21,7 @@ local servers = {
 		filetypes = { "vue" },
 	},
 	eslint = {},
+	ocamllsp = {},
 }
 
 local function on_attach(client)
@@ -53,6 +54,7 @@ local function setup()
 			-- Formatters
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.prettierd,
+			null_ls.builtins.formatting.ocamlformat,
 			-- Diagnostics
 			-- Code actions
 		},

@@ -1,4 +1,8 @@
 local which_key = require("which-key")
+vim.keymap.set("n", "<F1>", "<nop>")
+vim.keymap.set("i", "<F1>", "<nop>")
+vim.keymap.set("x", "<F1>", "<nop>")
+
 -- Normal mode
 which_key.register({
 	["<leader>"] = {
