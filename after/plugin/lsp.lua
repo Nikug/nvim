@@ -21,7 +21,6 @@ local servers = {
 		filetypes = { "vue" },
 	},
 	eslint = {},
-	ocamllsp = {},
 }
 
 local function on_attach(client)
