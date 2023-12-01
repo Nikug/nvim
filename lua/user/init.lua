@@ -17,7 +17,7 @@ vim.g.nocompatible = true
 vim.opt.wrap = false
 vim.opt.timeoutlen = 250
 
-vim.cmd([[colorscheme catppuccin-mocha]])
-
-require("user.keybindings")
 require("user.plugins")
+
+vim.cmd([[colorscheme catppuccin-mocha]])
+require("user.keybindings")
