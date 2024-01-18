@@ -23,7 +23,7 @@ require("lazy").setup({
 	"lbrayner/vim-rzip",
 	"nvim-lua/plenary.nvim",
 	{ "catppuccin/nvim", name = "catppuccin", lazy = false },
-	{ "kyazdani42/nvim-tree.lua", dependencies = { "kyazdani42/nvim-web-devicons" }, version = "nightly" },
+	{ "kyazdani42/nvim-tree.lua", dependencies = { "kyazdani42/nvim-web-devicons" } },
 	{ "nvim-telescope/telescope.nvim", tag = "0.1.5", dependencies = { { "nvim-lua/plenary.nvim" } } },
 	{
 		"folke/which-key.nvim",
