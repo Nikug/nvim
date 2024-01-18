@@ -21,6 +21,7 @@ local servers = {
 		filetypes = { "vue" },
 	},
 	eslint = {},
+	gdscript = {},
 }
 
 local function on_attach(client)
