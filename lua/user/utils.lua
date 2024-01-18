@@ -139,7 +139,7 @@ function M.search_files()
 			cmd = "git ls-files --others --cached --exclude-standard -- . ':!:*.yarn/**'",
 		})
 	else
-		require("telescope.builtin").files()
+		require("telescope.builtin").find_files()
 	end
 end
 
