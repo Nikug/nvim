@@ -73,7 +73,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use("neovim/nvim-lspconfig")
-	use({ "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } })
+	use({ "nvimtools/none-ls.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
 	-- Treesitter
 	use({

@@ -25,7 +25,7 @@ local servers = {
 
 local function on_attach(client)
 	-- Disable formatting and use external formatter instead
-	-- from Null-ls
+	-- from None-ls
 	client.server_capabilities.document_formatting = false
 	client.server_capabilities.document_range_formatting = false
 	client.server_capabilities.documentFormattingProvider = false
@@ -47,6 +47,7 @@ local function setup()
 		require("lspconfig")[server_name].setup(opts)
 	end
 
+	-- Might require change to none-ls in the future
 	local null_ls = require("null-ls")
 	null_ls.setup({
 		sources = {
