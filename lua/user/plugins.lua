@@ -23,8 +23,7 @@ return require("packer").startup(function(use)
 	use("lbrayner/vim-rzip")
 	use({ "catppuccin/nvim", as = "catppuccin" })
 	use({ "kyazdani42/nvim-tree.lua", requires = { "kyazdani42/nvim-web-devicons" }, tag = "nightly" })
-	use({ "junegunn/fzf", run = "./install --bin" })
-	use({ "ibhagwan/fzf-lua", requires = { "kyazdani42/nvim-web-devicons" } })
+	use({ "nvim-telescope/telescope.nvim", tag = "0.1.5", requires = { { "nvim-lua/plenary.nvim" } } })
 	use({
 		"folke/which-key.nvim",
 		config = function()

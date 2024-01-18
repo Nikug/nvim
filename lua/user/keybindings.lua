@@ -10,12 +10,9 @@ which_key.register({
 			[[<Cmd>lua require("user.utils").search_files()<CR>]],
 			"Search files",
 		},
-		b = { "<Cmd>FzfLua buffers<CR>", "Search buffers" },
-		a = { "<Cmd>FzfLua files<CR>", "Search all files" },
-		["/"] = {
-			[[<Cmd>lua require("fzf-lua").live_grep({ cmd = "rg -i -g '!{.git,node_modules}/'" })<CR>]],
-			"Search text",
-		},
+		b = { "<Cmd>Telescope buffers<CR>", "Search buffers" },
+		a = { "<Cmd>Telescope find_files<CR>", "Search all files" },
+		["/"] = { "<Cmd>Telescope live_grep<CR>", "Search text" },
 		l = { "<Cmd>bn<CR>", "Next buffer" },
 		h = { "<Cmd>bp<CR>", "Previous buffer" },
 
@@ -75,15 +72,11 @@ which_key.register({
 			name = "Code",
 			h = { "<Cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
 			H = { "<Cmd>lua vim.diagnostic.open_float(nil, {focus=false})<CR>", "Hover diagnostics" },
-			a = { "<Cmd>FzfLua lsp_code_actions<CR>", "Actions" },
-			d = { "<Cmd>FzfLua lsp_definitions<CR>", "Definition" },
-			i = { "<Cmd>FzfLua lsp_implementations<CR>", "Implementation" },
-			r = { "<Cmd>FzfLua lsp_references<CR>", "References" },
-			t = { "<Cmd>FzfLua lsp_typedefs<CR>", "Type definition" },
-			s = {
-				"<Cmd>lua require('fzf-lua').lsp_live_workspace_symbols({ file_ignore_patterns={ 'node_modules' }})<CR>",
-				"Symbols",
-			},
+			a = { "<Cmd>lua vim.lsp.buf.code_action()<CR>", "Actions" },
+			d = { "<Cmd>Telescope lsp_definitions<CR>", "Definition" },
+			i = { "<Cmd>Telescope lsp_implementations<CR>", "Implementation" },
+			r = { "<Cmd>Telescope lsp_references<CR>", "References" },
+			t = { "<Cmd>Telescope lsp_typedefs<CR>", "Type definition" },
 			n = { [[<Cmd>lua require('nvim-treesitter-refactor.navigation').goto_next_usage()<CR>]], "Next" },
 			N = {
 				[[<Cmd>lua require('nvim-treesitter-refactor.navigation').goto_previous_usage()<CR>]],
@@ -105,7 +98,7 @@ which_key.register({
 
 		o = {
 			name = "Open",
-			f = { "<Cmd>FzfLua files<CR>", "File" },
+			f = { "<Cmd>Telescope find_files<CR>", "File" },
 			F = { [[<Cmd>lua require('user.utils').set_working_directory()<CR>]], "Folder" },
 		},
 
