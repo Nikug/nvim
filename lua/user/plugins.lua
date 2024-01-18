@@ -1,90 +1,85 @@
-local ensure_packer = function()
-	local fn = vim.fn
-	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-		vim.cmd([[packadd packer.nvim]])
-		return true
-	end
-	return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
+vim.opt.rtp:prepend(lazypath)
 
-ensure_packer()
-
-return require("packer").startup(function(use)
-	use({
+require("lazy").setup({
+	{
 		"wbthomason/packer.nvim",
 		config = function()
 			require("mason").setup()
 		end,
-	})
-	use("justinmk/vim-sneak")
-	use("tpope/vim-surround")
-	use("lbrayner/vim-rzip")
-	use({ "catppuccin/nvim", as = "catppuccin" })
-	use({ "kyazdani42/nvim-tree.lua", requires = { "kyazdani42/nvim-web-devicons" }, tag = "nightly" })
-	use({ "nvim-telescope/telescope.nvim", tag = "0.1.5", requires = { { "nvim-lua/plenary.nvim" } } })
-	use({
+	},
+	"justinmk/vim-sneak",
+	"tpope/vim-surround",
+	"lbrayner/vim-rzip",
+	"nvim-lua/plenary.nvim",
+	{ "catppuccin/nvim", name = "catppuccin", lazy = false },
+	{ "kyazdani42/nvim-tree.lua", dependencies = { "kyazdani42/nvim-web-devicons" }, version = "nightly" },
+	{ "nvim-telescope/telescope.nvim", tag = "0.1.5", dependencies = { { "nvim-lua/plenary.nvim" } } },
+	{
 		"folke/which-key.nvim",
 		config = function()
 			require("which-key").setup({})
 		end,
-	})
-	use({
+	},
+	{
 		"windwp/nvim-autopairs",
 		config = function()
 			require("nvim-autopairs").setup({})
 		end,
-	})
-	use({
+	},
+	{
 		"windwp/nvim-ts-autotag",
 		config = function()
 			require("nvim-ts-autotag").setup()
 		end,
-	})
-	use({
+	},
+	{
 		"numToStr/Comment.nvim",
 		config = function()
 			require("Comment").setup({ mappings = false })
 		end,
-	})
-	use({ "dcampos/nvim-snippy" })
-	use({
+	},
+	"dcampos/nvim-snippy",
+	{
 		"hrsh7th/nvim-cmp",
-		requires = {
+		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"dcampos/cmp-snippy",
 		},
-	})
-	use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
+	},
+	{ "nvim-lualine/lualine.nvim", dependencies = { "kyazdani42/nvim-web-devicons" } },
 
 	-- LSP
-	use("williamboman/mason.nvim")
-	use({
+	"williamboman/mason.nvim",
+	{
 		"williamboman/mason-lspconfig.nvim",
-		requires = { "williamboman/mason.nvim" },
+		dependencies = { "williamboman/mason.nvim" },
 		config = function()
 			require("mason-lspconfig").setup({
 				automatic_installation = true,
 			})
 		end,
-	})
-	use("neovim/nvim-lspconfig")
-	use({ "nvimtools/none-ls.nvim", requires = { "nvim-lua/plenary.nvim" } })
+	},
+	"neovim/nvim-lspconfig",
+	{ "nvimtools/none-ls.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 
 	-- Treesitter
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		run = function()
-			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-			ts_update()
-		end,
-	})
-	use("nvim-treesitter/nvim-treesitter-refactor")
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	"nvim-treesitter/nvim-treesitter-refactor",
 
 	-- Git
-	use({ "tpope/vim-fugitive" })
-end)
+	{ "tpope/vim-fugitive" },
+})
