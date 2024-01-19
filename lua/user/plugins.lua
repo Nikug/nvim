@@ -12,12 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{
-		"wbthomason/packer.nvim",
-		config = function()
-			require("mason").setup()
-		end,
-	},
 	"justinmk/vim-sneak",
 	"tpope/vim-surround",
 	"lbrayner/vim-rzip",
@@ -63,7 +57,13 @@ require("lazy").setup({
 	{ "nvim-lualine/lualine.nvim", dependencies = { "kyazdani42/nvim-web-devicons" } },
 
 	-- LSP
-	"williamboman/mason.nvim",
+	{
+		"williamboman/mason.nvim",
+		lazy = false,
+		config = function()
+			require("mason").setup()
+		end,
+	},
 	{
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "williamboman/mason.nvim" },
