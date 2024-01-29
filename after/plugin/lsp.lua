@@ -22,6 +22,7 @@ local servers = {
 	},
 	eslint = {},
 	gdscript = {},
+	["rust-analyzer"] = {},
 }
 
 local function on_attach(client)
