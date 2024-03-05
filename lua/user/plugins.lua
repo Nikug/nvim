@@ -82,4 +82,7 @@ require("lazy").setup({
 
 	-- Git
 	{ "tpope/vim-fugitive" },
+
+	-- AI
+	{ "Exafunction/codeium.vim" },
 })

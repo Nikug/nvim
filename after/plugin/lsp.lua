@@ -26,11 +26,18 @@ local servers = {
 }
 
 local function on_attach(client)
-	-- Disable formatting and use external formatter instead
-	-- from None-ls
-	client.server_capabilities.document_formatting = false
-	client.server_capabilities.document_range_formatting = false
-	client.server_capabilities.documentFormattingProvider = false
+	-- rust_analyzer handles formatting with rustfmt
+	if client.name == "rust_analyzer" then
+		client.server_capabilities.document_formatting = true
+		client.server_capabilities.document_range_formatting = true
+		client.server_capabilities.documentFormattingProvider = true
+	else
+		-- Disable formatting and use external formatter instead
+		-- from None-ls
+		client.server_capabilities.document_formatting = false
+		client.server_capabilities.document_range_formatting = false
+		client.server_capabilities.documentFormattingProvider = false
+	end
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -57,7 +64,7 @@ local function setup()
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.prettierd,
 			null_ls.builtins.formatting.ocamlformat,
-			null_ls.builtins.formatting.rustfmt,
+
 			-- Diagnostics
 			-- Code actions
 		},
