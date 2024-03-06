@@ -84,5 +84,5 @@ require("lazy").setup({
 	{ "tpope/vim-fugitive" },
 
 	-- AI
-	{ "Exafunction/codeium.vim" },
+	{ "Exafunction/codeium.vim", event = "BufEnter" },
 })
