@@ -79,7 +79,7 @@ which_key.register({
 			d = { "<Cmd>Telescope lsp_definitions<CR>", "Definition" },
 			i = { "<Cmd>Telescope lsp_implementations<CR>", "Implementation" },
 			r = { "<Cmd>Telescope lsp_references<CR>", "References" },
-			t = { "<Cmd>Telescope lsp_typedefs<CR>", "Type definition" },
+			t = { "<Cmd>Telescope lsp_type_definitions<CR>", "Type definition" },
 			n = { [[<Cmd>lua require('nvim-treesitter-refactor.navigation').goto_next_usage()<CR>]], "Next" },
 			N = {
 				[[<Cmd>lua require('nvim-treesitter-refactor.navigation').goto_previous_usage()<CR>]],
