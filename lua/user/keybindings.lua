@@ -116,7 +116,11 @@ which_key.register({
 			g = { "<Cmd>G<CR>", "Git" },
 		},
 
-		p = { "<Cmd>YankyRingHistory<CR>", "Paste from history" },
+		C = {
+			name = "Codeium",
+			d = { "<Cmd>Codeium Disable<CR>", "Disable" },
+			e = { "<Cmd>Codeium Enable<CR>", "Enable" },
+		},
 	},
 
 	["<M-j>"] = { ":m .+1<CR>==", "Move lines down" },
