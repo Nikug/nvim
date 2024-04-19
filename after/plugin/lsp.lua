@@ -23,6 +23,7 @@ local servers = {
 	eslint = {},
 	gdscript = {},
 	rust_analyzer = {},
+	intelephense = {},
 }
 
 local function on_attach(client)
