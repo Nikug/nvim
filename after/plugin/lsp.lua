@@ -1,3 +1,5 @@
+local utils = require("utils")
+
 local servers = {
 	html = {},
 	jsonls = {},
@@ -20,15 +22,28 @@ local servers = {
 	volar = {
 		filetypes = { "vue" },
 	},
-	eslint = {},
+	-- eslint = {},
 	gdscript = {},
 	rust_analyzer = {},
 	intelephense = {},
+	omnisharp = {
+		settings = {
+			RoslynExtensionsOptions = {
+				EnableAnalyzersSupport = false,
+				EnableImportCompletion = true,
+			},
+		},
+		handlers = {
+			["textDocument/definition"] = require("omnisharp_extended").definition_handler,
+			["textDocument/typeDefinition"] = require("omnisharp_extended").type_definition_handler,
+		},
+	},
 }
 
+local hasFormatting = { "rust_analyzer", "omnisharp" }
+
 local function on_attach(client)
-	-- rust_analyzer handles formatting with rustfmt
-	if client.name == "rust_analyzer" then
+	if utils.contains(hasFormatting, client.name) then
 		client.server_capabilities.document_formatting = true
 		client.server_capabilities.document_range_formatting = true
 		client.server_capabilities.documentFormattingProvider = true

@@ -75,6 +75,7 @@ require("lazy").setup({
 	},
 	"neovim/nvim-lspconfig",
 	{ "nvimtools/none-ls.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+	"Hoffs/omnisharp-extended-lsp.nvim",
 
 	-- Treesitter
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
