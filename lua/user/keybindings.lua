@@ -52,18 +52,6 @@ which_key.register({
 			K = { "<Cmd>q!<CR>", "Close without saving" },
 		},
 
-		w = {
-			name = "Window",
-			s = { "<C-w>s|<C-w>j", "Split horizontal" },
-			v = { "<C-w>v|<C-w>l", "Split vertical" },
-			K = { "<Cmd>q<CR>", "Close window" },
-			j = { "<C-w>j", "Move down" },
-			k = { "<C-w>k", "Move up" },
-			h = { "<C-w>h", "Move left" },
-			l = { "<C-w>l", "Move right" },
-			["="] = { "<C-w>=", "Equalize size" },
-		},
-
 		s = {
 			name = "Select",
 			a = { "gg^VG$", "All" },
@@ -73,23 +61,9 @@ which_key.register({
 
 		c = {
 			name = "Code",
-			h = { "<Cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
-			H = { "<Cmd>lua vim.diagnostic.open_float(nil, {focus=false})<CR>", "Hover diagnostics" },
 			a = { "<Cmd>lua vim.lsp.buf.code_action()<CR>", "Actions" },
-			d = { "<Cmd>Telescope lsp_definitions<CR>", "Definition" },
-			i = { "<Cmd>Telescope lsp_implementations<CR>", "Implementation" },
-			r = { "<Cmd>Telescope lsp_references<CR>", "References" },
-			t = { "<Cmd>Telescope lsp_type_definitions<CR>", "Type definition" },
-			n = { [[<Cmd>lua require('nvim-treesitter-refactor.navigation').goto_next_usage()<CR>]], "Next" },
-			N = {
-				[[<Cmd>lua require('nvim-treesitter-refactor.navigation').goto_previous_usage()<CR>]],
-				"Previous",
-			},
-			R = { "<Cmd>lua vim.lsp.buf.rename()<CR>", "Rename symbol" },
+			r = { "<Cmd>lua vim.lsp.buf.rename()<CR>", "Rename symbol" },
 			c = { "<Plug>(comment_toggle_linewise_current)", "Toggle comment" },
-			e = { "<Cmd>lua vim.diagnostic.goto_next()<CR>", "Next error" },
-			E = { "<Cmd>lua vim.diagnostic.goto_prev()<CR>", "Previous error" },
-			f = { "za", "Toggle fold" },
 		},
 
 		L = {
@@ -109,11 +83,6 @@ which_key.register({
 			name = "Quit",
 			q = { "<Cmd>wqa<CR>", "Save & Quit" },
 			Q = { "<Cmd>qa!<CR>", "Quit without saving" },
-		},
-
-		g = {
-			name = "Git",
-			g = { "<Cmd>G<CR>", "Git" },
 		},
 
 		C = {

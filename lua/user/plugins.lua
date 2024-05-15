@@ -57,6 +57,7 @@ require("lazy").setup({
 	{ "nvim-lualine/lualine.nvim", dependencies = { "kyazdani42/nvim-web-devicons" } },
 
 	-- LSP
+	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
 	{
 		"williamboman/mason.nvim",
 		lazy = false,
