@@ -4,6 +4,8 @@ local lsp_config = require("lspconfig")
 lsp_zero.on_attach(function(_, bufnr)
 	lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
 
+	vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", { buffer = bufnr })
+	vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<cr>", { buffer = bufnr })
 	vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", { buffer = bufnr })
 	vim.keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<cr>", { buffer = bufnr })
 end)
@@ -77,7 +79,7 @@ null_ls.setup({
 	sources = {
 		-- Formatters
 		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.prettierd,
+		null_ls.builtins.formatting.prettier,
 		null_ls.builtins.formatting.ocamlformat,
 
 		-- Diagnostics
