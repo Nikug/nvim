@@ -2,9 +2,6 @@ local which_key = require("which-key")
 vim.keymap.set("n", "<F1>", "<nop>")
 vim.keymap.set("i", "<F1>", "<nop>")
 vim.keymap.set("x", "<F1>", "<nop>")
-vim.keymap.set("i", "<C-g>", function()
-	return vim.fn["codeium#Accept"]()
-end, { expr = true, silent = true })
 
 -- Normal mode
 which_key.register({

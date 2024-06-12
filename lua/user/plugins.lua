@@ -18,7 +18,11 @@ require("lazy").setup({
 	"nvim-lua/plenary.nvim",
 	{ "catppuccin/nvim", name = "catppuccin", lazy = false },
 	{ "kyazdani42/nvim-tree.lua", dependencies = { "kyazdani42/nvim-web-devicons" } },
-	{ "nvim-telescope/telescope.nvim", tag = "0.1.5", dependencies = { { "nvim-lua/plenary.nvim" } } },
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.5",
+		dependencies = { { "nvim-lua/plenary.nvim" } },
+	},
 	{
 		"folke/which-key.nvim",
 		config = function()
@@ -86,5 +90,14 @@ require("lazy").setup({
 	{ "tpope/vim-fugitive" },
 
 	-- AI
-	{ "Exafunction/codeium.vim", event = "BufEnter" },
+	{
+		"Exafunction/codeium.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"hrsh7th/nvim-cmp",
+		},
+		config = function()
+			require("codeium").setup({})
+		end,
+	},
 })
