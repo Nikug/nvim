@@ -58,7 +58,7 @@ function M.save()
 		return
 	end
 
-	vim.lsp.buf.format({ async = false })
+	require("conform").format({ async = false })
 	vim.cmd("w")
 end
 

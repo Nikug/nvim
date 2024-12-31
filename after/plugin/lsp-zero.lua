@@ -73,16 +73,16 @@ require("mason-lspconfig").setup({
 	},
 })
 
--- Might require change to none-ls in the future
-local null_ls = require("null-ls")
-null_ls.setup({
-	sources = {
-		-- Formatters
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.prettier,
-		null_ls.builtins.formatting.ocamlformat,
-
-		-- Diagnostics
-		-- Code actions
+local prettier = { "prettierd", "prettier", stop_after_first = true }
+require("conform").setup({
+	formatters_by_ft = {
+		lua = { "stylua" },
+		javascript = prettier,
+		typescript = prettier,
+		typescriptreact = prettier,
+		javascriptreact = prettier,
+	},
+	default_format_opts = {
+		lsp_format = "fallback",
 	},
 })
