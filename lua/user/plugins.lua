@@ -28,6 +28,7 @@ require("lazy").setup({
 		config = function()
 			require("which-key").setup({})
 		end,
+		dependencies = { "echasnovski/mini.icons" },
 	},
 	{
 		"windwp/nvim-autopairs",
