@@ -8,6 +8,48 @@ snippet rfc "React functional component"
 	
 		return <div>${2}</div>
 	}
+snippet nfcp "NextJS function component with props"
+	import * as React from "react"
+
+	interface Props {
+		
+	}
+
+	const ${1:Component}: React.FC<Props> = ({ }) => {
+		
+		return (
+			<div />
+		)
+	}
+
+	export default ${1:Component}
+snippet nfc "NextJS function component"
+	import * as React from "react"
+
+	const ${1:Component}: React.FC = () => {
+		
+		return (
+			<div />
+		)
+	}
+
+	export default ${1:Component}
+snippet nh "NextJS hook"
+	import * as React from "react"
+
+	interface Props {
+		
+	}
+
+	interface Return {
+
+	}
+
+	const ${1:useHook} = ({ }: Props): Return => {
+			
+	}
+
+	export default ${1:useHook}
 snippet uset "UseTranslation hook"
 	const { t } = useTranslation${1}()
 snippet scp "SolidJS component with props"
