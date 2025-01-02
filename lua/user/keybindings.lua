@@ -4,112 +4,62 @@ vim.keymap.set("i", "<F1>", "<nop>")
 vim.keymap.set("x", "<F1>", "<nop>")
 
 -- Normal mode
-which_key.register({
-	["<leader>"] = {
-		["<leader>"] = {
-			[[<Cmd>lua require("user.utils").search_files()<CR>]],
-			"Search files",
-		},
-		b = { "<Cmd>Telescope buffers<CR>", "Search buffers" },
-		a = { "<Cmd>Telescope find_files<CR>", "Search all files" },
-		["/"] = { "<Cmd>Telescope live_grep<CR>", "Search text" },
-		l = { "<Cmd>bn<CR>", "Next buffer" },
-		h = { "<Cmd>bp<CR>", "Previous buffer" },
+which_key.add({
+	{
+		mode = "n",
+		{ "<leader><leader>", [[<Cmd>lua require("user.utils").search_files()<CR>]], desc = "Search files" },
+		{ "<leader>b", "<Cmd>Telescope buffers<CR>", desc = "Search buffers" },
+		{ "<leader>a", "<Cmd>Telescope find_files<CR>", desc = "Search all files" },
+		{ "<leader>/", "<Cmd>Telescope live_grep<CR>", desc = "Search text" },
 
-		f = {
-			name = "File",
-			s = { [[<Cmd>lua require('user.utils').save()<CR>]], "Save" },
-			S = { [[<Cmd>lua require('user.utils').save_as()<CR>]], "Save as" },
-			w = { "<Cmd>w<CR>", "Save without formatting" },
-			a = { "<Cmd>wa<CR>", "Save all" },
-			q = { "<Cmd>wq<CR>", "Save and close file" },
-			Q = { "<Cmd>q!<CR>", "Close file without saving" },
-			f = { "<Cmd>lua vim.lsp.buf.format()<CR>", "Format" },
-			l = { "<Cmd>lua vim.lsp.buf.lint()<CR>", "Lint" },
-			n = { [[<Cmd>enew|setl bt=nofile<CR>]], "New buffer" },
-			N = { [[<Cmd>lua require('user.utils').new_file()<CR>]], "New file" },
-			v = { "<Cmd>NvimTreeFindFile<CR>", "View" },
-		},
+		{ "<leader>f", group = "file" },
+		{ "<leader>fs", [[<Cmd>lua require('user.utils').save()<CR>]], desc = "Save" },
+		{ "<leader>fS", [[<Cmd>lua require('user.utils').save_as()<CR>]], desc = "Save as" },
+		{ "<leader>fw", [[<Cmd>w<CR>]], desc = "Save without formatting" },
+		{ "<leader>fa", [[<Cmd>wa<CR>]], desc = "Save all" },
+		{ "<leader>ff", [[<Cmd>lua require('conform').format()<CR>]], desc = "Format file" },
+		{ "<leader>fl", [[<Cmd>lua vim.lsp.buf.lint()<CR>]], desc = "Lint file" },
+		{ "<leader>fn", [[<Cmd>enew|setl bt=nofile<CR>]], desc = "New buffer" },
+		{ "<leader>fv", [[<Cmd>NvimTreeFindFile<CR>]], desc = "View file in tree" },
 
-		n = {
-			name = "Neovim",
-			r = { [[<Cmd>lua require("user.utils").reload_config()<CR>]], "Reload config" },
-		},
+		{ "<leader>nr", [[<Cmd>lua require("user.utils").reload_config()<CR>]], desc = "Reload config" },
 
-		v = {
-			name = "View",
-			s = { "<Cmd>NvimTreeToggle<CR>", "Tree" },
-			f = { "<Cmd>NvimTreeFindFile<CR>", "File" },
-		},
+		{ "<leader>vs", [[<Cmd>NvimTreeToggle<CR>]], desc = "Tree" },
+		{ "<leader>vf", [[<Cmd>NvimTreeToggle<CR>]], desc = "View file in tree" },
 
-		t = {
-			name = "Tab",
-			o = { "<Cmd>w|%bd|e#<CR>", "Close others" },
-			k = { [[<Cmd>q<CR>]], "Close" },
-			K = { "<Cmd>q!<CR>", "Close without saving" },
-		},
+		{ "<leader>to", [[<Cmd>w|%bd|e#<CR>]], desc = "Close others" },
 
-		s = {
-			name = "Select",
-			a = { "gg^VG$", "All" },
-			A = { [[mmgg^VG$y'm]], "All & yank" },
-			p = { [["+p]], "Paste from clipboard" },
-		},
+		{ "<leader>s", group = "select" },
+		{ "<leader>sa", [[gg^VG$]], desc = "Select all" },
+		{ "<leader>sA", [[mmgg^VG$y'm]], desc = "Select all and yank" },
+		{ "<leader>sp", [["+p]], desc = "Paste from clipboard" },
 
-		c = {
-			name = "Code",
-			a = { "<Cmd>lua vim.lsp.buf.code_action()<CR>", "Actions" },
-			r = { "<Cmd>lua vim.lsp.buf.rename()<CR>", "Rename symbol" },
-			c = { "<Plug>(comment_toggle_linewise_current)", "Toggle comment" },
-		},
+		{ "<leader>c", group = "code" },
+		{ "<leader>ca", [[<Cmd>lua vim.lsp.buf.code_action()<CR>]], desc = "LSP actions" },
+		{ "<leader>cr", [[<Cmd>lua vim.lsp.buf.rename()<CR>]], desc = "LSP rename" },
+		{ "<leader>cc", [[<Plug>(comment_toggle_linewise_current)]], desc = "Toggle comment" },
 
-		L = {
-			name = "LSP",
-			i = { "<Cmd>LspInfo<CR>", "Info" },
-			r = { "<Cmd>LspRestart<CR>", "Restart" },
-			m = { "<Cmd>Mason<CR>", "Mason" },
-		},
+		{ "<leader>L", group = "lsp" },
+		{ "<leader>Li", [[<Cmd>LspInfo<CR>]], desc = "LSP info" },
+		{ "<leader>Ll", [[<Cmd>LspRestart<CR>]], desc = "LSP restart" },
+		{ "<leader>Lm", [[<Cmd>Mason<CR>]], desc = "LSP Mason" },
 
-		o = {
-			name = "Open",
-			f = { "<Cmd>Telescope find_files<CR>", "File" },
-			F = { [[<Cmd>lua require('user.utils').set_working_directory()<CR>]], "Folder" },
-		},
+		{ "<leader>q", group = "quit" },
+		{ "<leader>qq", [[<Cmd>wqa<CR>]], desc = "Save and quit" },
+		{ "<leader>qQ", [[<Cmd>qa!<CR>]], desc = "Quit without saving" },
 
-		q = {
-			name = "Quit",
-			q = { "<Cmd>wqa<CR>", "Save & Quit" },
-			Q = { "<Cmd>qa!<CR>", "Quit without saving" },
-		},
-
-		C = {
-			name = "Codeium",
-			d = { "<Cmd>Codeium Disable<CR>", "Disable" },
-			e = { "<Cmd>Codeium Enable<CR>", "Enable" },
-		},
+		{ "<M-j>", ":m .+1<CR>==", desc = "Move line down" },
+		{ "<M-k>", ":m .-2<CR>==", desc = "Move line up" },
 	},
-
-	["<M-j>"] = { ":m .+1<CR>==", "Move lines down" },
-	["<M-k>"] = { ":m .-2<CR>==", "Move lines up" },
-}, { mode = "n" })
-
--- Visual mode
-which_key.register({
-	["<M-j>"] = { [[:m '>+1<CR>gv=gv]], "Move lines down" },
-	["<M-k>"] = { [[:m '<-2<CR>gv=gv]], "Move lines down" },
-	["<leader>"] = {
-		c = {
-			name = "Code",
-			c = { "<Plug>(comment_toggle_linewise_visual)", "Toggle comment" },
-		},
-		s = {
-			name = "Select",
-			c = { [["+y]], "Yank to clipboard" },
-		},
+	{
+		mode = { "x" },
+		{ "<leader>cc", [[<Plug>(comment_toggle_linewise_visual)]], desc = "Toggle comment" },
+		{ "<leader>sc", [["+y]], desc = "Yank to clipboard" },
+		{ "<M-j>", [[:m '>+1<CR>gv=gv]], desc = "Move lines down" },
+		{ "<M-k>", [[:m '<-2<CR>gv=gv]], desc = "Move lines up" },
 	},
-}, { mode = "x" })
-
--- Insert mode
-which_key.register({
-	["<C-h>"] = { "<C-w>", "Delete word" },
-}, { mode = "i" })
+	{
+		mode = { "i" },
+		{ "<C-h>", "<C-w>", desc = "Delete word" },
+	},
+})
