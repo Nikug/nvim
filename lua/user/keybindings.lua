@@ -25,7 +25,7 @@ which_key.add({
 		{ "<leader>nr", [[<Cmd>lua require("user.utils").reload_config()<CR>]], desc = "Reload config" },
 
 		{ "<leader>vs", [[<Cmd>NvimTreeToggle<CR>]], desc = "Tree" },
-		{ "<leader>vf", [[<Cmd>NvimTreeToggle<CR>]], desc = "View file in tree" },
+		{ "<leader>vf", [[<Cmd>NvimTreeFindFile<CR>]], desc = "View file in tree" },
 
 		{ "<leader>to", [[<Cmd>w|%bd|e#<CR>]], desc = "Close others" },
 
