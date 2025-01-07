@@ -41,7 +41,7 @@ which_key.add({
 
 		{ "<leader>L", group = "lsp" },
 		{ "<leader>Li", [[<Cmd>LspInfo<CR>]], desc = "LSP info" },
-		{ "<leader>Ll", [[<Cmd>LspRestart<CR>]], desc = "LSP restart" },
+		{ "<leader>Lr", [[<Cmd>LspRestart<CR>]], desc = "LSP restart" },
 		{ "<leader>Lm", [[<Cmd>Mason<CR>]], desc = "LSP Mason" },
 
 		{ "<leader>q", group = "quit" },
