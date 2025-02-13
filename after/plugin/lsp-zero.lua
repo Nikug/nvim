@@ -1,6 +1,10 @@
 local lsp_zero = require("lsp-zero")
 local lsp_config = require("lspconfig")
 
+lsp_config.gdscript.setup({
+	cmd = { "ncat", "localhost", "6005" },
+})
+
 lsp_zero.on_attach(function(_, bufnr)
 	lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
 
