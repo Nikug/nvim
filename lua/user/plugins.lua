@@ -62,24 +62,15 @@ require("lazy").setup({
 	{ "nvim-lualine/lualine.nvim", dependencies = { "kyazdani42/nvim-web-devicons" } },
 
 	-- LSP
-	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
+	"neovim/nvim-lspconfig",
 	{
 		"williamboman/mason.nvim",
 		lazy = false,
-		config = function()
-			require("mason").setup()
-		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		dependencies = { "williamboman/mason.nvim" },
-		config = function()
-			require("mason-lspconfig").setup({
-				automatic_installation = true,
-			})
-		end,
+		dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
 	},
-	"neovim/nvim-lspconfig",
 	"Hoffs/omnisharp-extended-lsp.nvim",
 	{ "stevearc/conform.nvim", opts = {} },
 
