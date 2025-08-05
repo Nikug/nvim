@@ -27,7 +27,6 @@ cmp.setup({
 	},
 	sources = cmp.config.sources({
 		{ name = "snippy" },
-		{ name = "codeium" },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 		{ name = "buffer" },
