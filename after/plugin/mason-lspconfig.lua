@@ -47,6 +47,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 
 		vim.keymap.set("n", "gK", "<cmd>:lua vim.diagnostic.open_float()<cr>", { buffer = ev.buf })
+		vim.keymap.set("n", "ga", "<cmd>:lua vim.lsp.buf.code_action()<cr>", { buffer = ev.buf })
+		vim.keymap.set("n", "gD", "<cmd>Telescope diagnostics bufnr=0<cr>", { buffer = ev.buf })
 	end,
 })
 
