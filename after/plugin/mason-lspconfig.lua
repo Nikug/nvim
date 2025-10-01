@@ -24,7 +24,7 @@ local function csharp_lsp_keymaps(buf)
 	)
 	vim.keymap.set("n", "gr", function()
 		require("omnisharp_extended").telescope_lsp_references()
-	end, { buffer = buf, noremap = true })
+	end, { buffer = buf, noremap = true, nowait = true })
 	vim.keymap.set(
 		"n",
 		"gt",
@@ -42,7 +42,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		else
 			vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", { buffer = ev.buf })
 			vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<cr>", { buffer = ev.buf })
-			vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", { buffer = ev.buf })
+			vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", { buffer = ev.buf, nowait = true })
 			vim.keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<cr>", { buffer = ev.buf })
 		end
 
