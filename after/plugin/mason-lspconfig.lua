@@ -73,6 +73,12 @@ vim.lsp.config("volar", {
 	filetypes = { "vue" },
 })
 
+vim.lsp.config("eslint", {
+	settings = {
+		nodePath = ".yarn/sdks",
+	},
+})
+
 vim.lsp.config("omnisharp", {
 	settings = {
 		RoslynExtensionsOptions = {
