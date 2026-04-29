@@ -16,7 +16,12 @@ require("lazy").setup({
 	"tpope/vim-surround",
 	"lbrayner/vim-rzip",
 	"nvim-lua/plenary.nvim",
+
+	-- Themes
 	{ "catppuccin/nvim", name = "catppuccin", lazy = false },
+	{ "EdenEast/nightfox.nvim" },
+	{ "rebelot/kanagawa.nvim" },
+
 	{ "kyazdani42/nvim-tree.lua", dependencies = { "kyazdani42/nvim-web-devicons" } },
 	{
 		"nvim-telescope/telescope.nvim",

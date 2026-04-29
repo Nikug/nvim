@@ -19,5 +19,5 @@ vim.opt.timeoutlen = 250
 
 require("user.plugins")
 
-vim.cmd([[colorscheme catppuccin-mocha]])
+vim.cmd([[colorscheme nightfox]])
 require("user.keybindings")
