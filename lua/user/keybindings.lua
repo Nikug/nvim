@@ -14,15 +14,9 @@ which_key.add({
 
 		{ "<leader>f", group = "file" },
 		{ "<leader>fs", [[<Cmd>lua require('user.utils').save()<CR>]], desc = "Save" },
-		{ "<leader>fS", [[<Cmd>lua require('user.utils').save_as()<CR>]], desc = "Save as" },
 		{ "<leader>fw", [[<Cmd>w<CR>]], desc = "Save without formatting" },
 		{ "<leader>fa", [[<Cmd>wa<CR>]], desc = "Save all" },
 		{ "<leader>ff", [[<Cmd>lua require('conform').format()<CR>]], desc = "Format file" },
-		{ "<leader>fl", [[<Cmd>lua vim.lsp.buf.lint()<CR>]], desc = "Lint file" },
-		{ "<leader>fn", [[<Cmd>enew|setl bt=nofile<CR>]], desc = "New buffer" },
-		{ "<leader>fv", [[<Cmd>NvimTreeFindFile<CR>]], desc = "View file in tree" },
-
-		{ "<leader>nr", [[<Cmd>lua require("user.utils").reload_config()<CR>]], desc = "Reload config" },
 
 		{ "<leader>vs", [[<Cmd>NvimTreeToggle<CR>]], desc = "Tree" },
 		{ "<leader>vf", [[<Cmd>NvimTreeFindFile<CR>]], desc = "View file in tree" },
@@ -46,7 +40,6 @@ which_key.add({
 
 		{ "<leader>q", group = "quit" },
 		{ "<leader>qq", [[<Cmd>wqa<CR>]], desc = "Save and quit" },
-		{ "<leader>qQ", [[<Cmd>qa!<CR>]], desc = "Quit without saving" },
 
 		{ "<M-j>", ":m .+1<CR>==", desc = "Move line down" },
 		{ "<M-k>", ":m .-2<CR>==", desc = "Move line up" },
