@@ -17,6 +17,21 @@ vim.g.nocompatible = true
 vim.opt.wrap = false
 vim.opt.timeoutlen = 250
 
+-- Clipboard fix for WSL
+if vim.fn.has("wsl") == 1 then
+	vim.g.clipboard = {
+		name = "WslClipboard",
+		copy = {
+			["+"] = "win32yank.exe -i --crlf",
+			["*"] = "win32yank.exe -i --crlf",
+		},
+		paste = {
+			["+"] = "win32yank.exe -o --crlf",
+			["*"] = "win32yank.exe -o --crlf",
+		},
+	}
+end
+
 require("user.plugins")
 
 vim.cmd([[colorscheme nightfox]])

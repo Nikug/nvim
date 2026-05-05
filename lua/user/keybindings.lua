@@ -47,7 +47,7 @@ which_key.add({
 	{
 		mode = { "x" },
 		{ "<leader>cc", [[<Plug>(comment_toggle_linewise_visual)]], desc = "Toggle comment" },
-		{ "<leader>sc", [["+y]], desc = "Yank to clipboard" },
+		{ "Y", [["+y]], desc = "Yank to clipboard" },
 		{ "<M-j>", [[:m '>+1<CR>gv=gv]], desc = "Move lines down" },
 		{ "<M-k>", [[:m '<-2<CR>gv=gv]], desc = "Move lines up" },
 	},
