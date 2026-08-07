@@ -80,7 +80,7 @@ require("lazy").setup({
 	{ "stevearc/conform.nvim", opts = {} },
 
 	-- Treesitter
-	{ "nvim-treesitter/nvim-treesitter", lazy = false, build = ":TSUpdate" },
+	{ "nvim-treesitter/nvim-treesitter", branch = "main", lazy = false, build = ":TSUpdate" },
 
 	-- Git
 	{ "tpope/vim-fugitive" },

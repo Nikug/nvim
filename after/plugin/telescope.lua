@@ -15,6 +15,11 @@ require("telescope").setup({
 			},
 		},
 		file_ignore_patterns = { "%.yarn" },
+
+		-- Fix for updated treesitter not working with telescope
+		preview = {
+			treesitter = false,
+		},
 	},
 	pickers = {
 		-- Default configuration for builtin pickers goes here:
