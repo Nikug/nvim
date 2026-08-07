@@ -76,8 +76,8 @@ require("lazy").setup({
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
 	},
-	"Hoffs/omnisharp-extended-lsp.nvim",
 	{ "stevearc/conform.nvim", opts = {} },
+	{ "seblyng/roslyn.nvim", opts = {} },
 
 	-- Treesitter
 	{ "nvim-treesitter/nvim-treesitter", branch = "main", lazy = false, build = ":TSUpdate" },
