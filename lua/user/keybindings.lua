@@ -34,8 +34,8 @@ which_key.add({
 		{ "<leader>cc", [[<Plug>(comment_toggle_linewise_current)]], desc = "Toggle comment" },
 
 		{ "<leader>L", group = "lsp" },
-		{ "<leader>Li", [[<Cmd>LspInfo<CR>]], desc = "LSP info" },
-		{ "<leader>Lr", [[<Cmd>LspRestart<CR>]], desc = "LSP restart" },
+		{ "<leader>Li", [[<Cmd>checkhealth vim.lsp<CR>]], desc = "LSP info" },
+		{ "<leader>Lr", [[<Cmd>lsp restart<CR>]], desc = "LSP restart" },
 		{ "<leader>Lm", [[<Cmd>Mason<CR>]], desc = "LSP Mason" },
 
 		{ "<leader>q", group = "quit" },
